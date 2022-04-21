@@ -1,0 +1,17 @@
+.aboutUsSpace {
+    color: white;
+    box-sizing: inherit;
+    padding: 40px 0px 40px 0px;
+}
+
+.aboutUsItem {
+    margin: auto;
+    width: 70%;
+}    
+
+.about-us-item img {
+    box-shadow: 0px 0px 15px 1px black;
+    float: none;
+    margin: 0;
+    width: 600px;
+}
