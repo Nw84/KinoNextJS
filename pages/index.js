@@ -1,6 +1,6 @@
 import { MongoClient } from "mongodb";
 
-import PosterList from "../components/posters/PosterList";
+import PosterList from "../components/movies/PosterList";
 import classes from "../styles/Home.module.css";
 
 function HomePage(props) {
