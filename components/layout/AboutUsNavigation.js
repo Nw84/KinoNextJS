@@ -6,7 +6,7 @@ function AboutUsNavigation() {
             <ul className={classes.aboutUsMenu}>
                 <li><a className={classes.menuText} href="/aboutus/history">Historia</a></li>
                 <li><a className={classes.menuText} href="/aboutus/policy">Policy</a></li>
-                <li><a className={classes.menuText} href="/aboutus/accessibility">Tillgänglighet</a></li >
+                <li><a className={classes.menuText} href="/aboutus/tillganglighet">Tillgänglighet</a></li >
                 <li><a className={classes.menuText} href="/aboutus/faq">FAQ</a></li >
             </ul >
         </nav >
