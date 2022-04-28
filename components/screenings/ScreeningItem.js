@@ -1,4 +1,5 @@
 import classes from './ScreeningItem.module.css';
+import Button from '../ui/Button';
 
 function ScreeningItem(props) {
     return (
@@ -13,7 +14,7 @@ function ScreeningItem(props) {
                     <h6>{props.seats}</h6>
                 </div>
                 <div className={classes.actions}>
-                    <button>Boka</button>
+                    <Button>Boka</Button>
                 </div>
             </div>
         </li>
