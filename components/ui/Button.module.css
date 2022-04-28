@@ -10,4 +10,9 @@
     text-align: center;
     box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
   }
+
+  .btn:hover {
+    color: whitesmoke;
+    border: 1px solid whitesmoke;
+  }
   
