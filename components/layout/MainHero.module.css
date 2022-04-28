@@ -1,0 +1,16 @@
+.hero {
+    background-image: url("../../public/hero.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: calc(100vw / (1440 / 600));
+}
+
+.upcoming {
+    float: left;
+    padding: 12% 32% 0% 32%;
+}
+
+.heroText {
+    margin:0%;
+    font-size:2vw;
+}
