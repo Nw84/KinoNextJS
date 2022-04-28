@@ -8,7 +8,7 @@ export async function getAllScreenings() {
 
     const screeningsCollection = db.collection("movieScreening");
 
-    const screenings = await screeningsCollection.find().toArray();
+    const screenings = await screeningsCollection.find({}).sort({ date: 1 }).toArray();
 
     client.close();
 
@@ -16,14 +16,28 @@ export async function getAllScreenings() {
 
 }
 
-export async function getSpecifikScreenings(id) {
+export async function getSpecifikScreenings(name) {
     const client = await MongoClient.connect("mongodb+srv://Bosse:LKjRPJ2chOlxeM0E@cluster0.rpxxl.mongodb.net/movieScreening?retryWrites=true&w=majority");
 
     const db = client.db();
 
     const screeningsCollection = db.collection("movieScreening");
 
-    const screenings = await screeningsCollection.find({ movieId: id.toString() }).toArray();
+    const screenings = await screeningsCollection.find({ movie: name.toString() }).toArray();
+
+    client.close();
+
+    return screenings;
+}
+
+export async function getMovieList() {
+    const client = await MongoClient.connect("mongodb+srv://Bosse:LKjRPJ2chOlxeM0E@cluster0.rpxxl.mongodb.net/movieScreening?retryWrites=true&w=majority");
+
+    const db = client.db();
+
+    const screeningsCollection = db.collection("movieScreening");
+
+    const screenings = await screeningsCollection.distinct("movie");
 
     client.close();
 

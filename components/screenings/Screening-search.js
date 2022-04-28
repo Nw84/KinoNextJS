@@ -20,8 +20,8 @@ function ScreeningSearch(props) {
             <div className={classes.control}>
                 <label htmlFor="title">Title</label>
                 <select id="title" ref={titleInputRef}>
-                    {props.posters.map((poster) => (
-                        <option key={poster.id} value={poster.id}>{poster.title}</option>
+                    {props.list.map((item) => (
+                        <option key={item} value={item}>{item}</option>
                     ))}
                 </select>
             </div>

@@ -1,8 +1,7 @@
 
 import { useRouter } from "next/router";
 import ScreeningsList from "../../components/screenings/ScreeningsList";
-import { getAllScreenings } from "../../helpers/getScreenings";
-import { getAllMoviePosters } from "../../helpers/getAllPosters";
+import { getAllScreenings, getMovieList } from "../../helpers/getScreenings";
 import ScreeningSearch from "../../components/screenings/Screening-search";
 
 function tickets(props) {
@@ -15,7 +14,7 @@ function tickets(props) {
 
     return <div>
         <h1>Biljetter</h1>
-        <ScreeningSearch onSearch={onSearchHandler} posters={props.posters} />
+        <ScreeningSearch onSearch={onSearchHandler} list={props.list} />
         <ScreeningsList screenings={props.screenings} />
     </div>
 }
@@ -24,21 +23,18 @@ function tickets(props) {
 export async function getStaticProps() {
 
     const screenings = await getAllScreenings();
-    const posters = await getAllMoviePosters();
+    const list = await getMovieList();
 
     return {
         props: {
-            posters: posters.map((poster) => ({
-                title: poster.title,
-                id: poster._id.toString()
-            })),
             screenings: screenings.map((screening) => ({
                 title: screening.movie,
                 id: screening._id.toString(),
                 date: screening.date,
                 image: screening.image,
                 seats: screening.Seats
-            }))
+            })),
+            list: list
         },
         revalidate: 1
     };
