@@ -6,7 +6,6 @@ function Layout(props) {
     return (
         <div>
             <MainNavigation />
-            <MainHero />
             <main className={classes.main}>{props.children}</main>
         </div>
     );
