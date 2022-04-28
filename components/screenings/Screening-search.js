@@ -31,8 +31,8 @@ function ScreeningSearch(props) {
             </div>
         </form>
             <div className={classes.filter}>
-                <h6>Active Filter: {props.filter} </h6>
-                <Button link="/tickets">Reset Filter</Button>
+                <h6>Aktivt Filter: {props.filter} </h6>
+                <Button link="/tickets">Nollställ filtret</Button>
             </div>
         </div>
     }

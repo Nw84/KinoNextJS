@@ -23,7 +23,7 @@ function FilteredTicketsPage(props) {
             <h1>Biljetter</h1>
             <ScreeningSearch onSearch={onSearchHandler} list={props.list} />
             <h6>Active Filter: {props.name} </h6>
-            <h2>Something went wrong and no screenings could be found</h2>
+            <h2>Något gick fel och det finns inga visningar för den valda filmen</h2>
         </Fragment>
     }
 }
