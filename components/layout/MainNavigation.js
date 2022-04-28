@@ -12,19 +12,19 @@ function MainNavigation() {
             <nav>
                 <ul>
                     <li>
-                        <Link href='/movies'>Movies</Link>
+                        <Link href='/movies'>Filmer</Link>
                     </li>
                     <li>
-                        <Link href='/kidsmovies'>Kids movies</Link>
+                        <Link href='/tickets'>Biljetter</Link>
                     </li>
                     <li>
-                        <Link href='/tickets'>Tickets</Link>
+                        <Link href='/aboutus'>Om oss</Link>
                     </li>
                     <li>
-                        <Link href='/aboutus'>About us</Link>
+                        <Link href='/contact'>Kontakt</Link>
                     </li>
-                    <li>
-                        <Link href='/contact'>Contact</Link>
+                    <li className={classes.login}>
+                        <Link href='/login'>Logga in</Link>
                     </li>
                 </ul>
             </nav>
