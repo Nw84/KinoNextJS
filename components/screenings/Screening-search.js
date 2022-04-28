@@ -20,7 +20,7 @@ function ScreeningSearch(props) {
         return <div><form className={classes.form} onSubmit={submitHandler}>
             <div className={classes.controls}>
                 <div className={classes.control}>
-                    <label htmlFor="title">Title</label>
+                    <label htmlFor="title"></label>
                     <select id="title" ref={titleInputRef}>
                         {props.list.map((item) => (
                             <option key={item} value={item}>{item}</option>
@@ -39,7 +39,7 @@ function ScreeningSearch(props) {
     return <form className={classes.form} onSubmit={submitHandler}>
         <div className={classes.controls}>
             <div className={classes.control}>
-                <label htmlFor="title">Title</label>
+                <label htmlFor="title"></label>
                 <select id="title" ref={titleInputRef}>
                     {props.list.map((item) => (
                         <option key={item} value={item}>{item}</option>
