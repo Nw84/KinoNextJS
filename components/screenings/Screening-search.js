@@ -21,11 +21,11 @@ function ScreeningSearch(props) {
                 <label htmlFor="title">Title</label>
                 <select id="title" ref={titleInputRef}>
                     {props.posters.map((poster) => (
-                        <option key={poster.id} value={poster.title}>{poster.title}</option>
+                        <option key={poster.id} value={poster.id}>{poster.title}</option>
                     ))}
                 </select>
             </div>
-            <Button>Find Event</Button>
+            <Button>Filtrera</Button>
         </div>
     </form>
 }
