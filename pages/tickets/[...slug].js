@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import { Fragment } from "react";
+import Link from "next/link";
 import { getSpecifikScreenings, getMovieList } from "../../helpers/getScreenings";
 import ScreeningsList from "../../components/screenings/ScreeningsList";
 import ScreeningSearch from "../../components/screenings/Screening-search";
@@ -13,12 +14,13 @@ function FilteredTicketsPage(props) {
 
     if (props.screenings.length > 0) {
         return <Fragment>
-            <ScreeningSearch onSearch={onSearchHandler} list={props.list} />
-            <h6>Active Filter: {props.name} </h6>
+            <h1>Biljetter</h1>
+            <ScreeningSearch onSearch={onSearchHandler} list={props.list} filter={props.name} />
             <ScreeningsList screenings={props.screenings} />
         </Fragment>
     } else {
         return <Fragment>
+            <h1>Biljetter</h1>
             <ScreeningSearch onSearch={onSearchHandler} list={props.list} />
             <h6>Active Filter: {props.name} </h6>
             <h2>Something went wrong and no screenings could be found</h2>
