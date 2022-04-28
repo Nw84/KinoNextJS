@@ -1,17 +1,18 @@
 .header {
-    width: 100%;
-    height: 7rem;
     display: flex;
+    flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-    background-color: #77002e;
+    justify-content: flex-start;
+    background: linear-gradient(#780000, #BB0000); 
+    width: 100%;
+    height: 8rem;
     padding: 0 10%;
   }
   
   .logo {
-    display: flex;
-    float: left;
-    margin: 10px 20px 0 10px;  
+    position: absolute;
+    left: 2rem;
+    margin: 1rem 0;
     width: 6rem;
     height: 6rem;
     background-image: url("../../public/gm.png");
@@ -19,11 +20,11 @@
   }
   
   .header ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
     display: flex;
-    align-items: baseline;
+    flex-direction: row;
+    text-align: center;
+    list-style: none;
+    padding: 0;
   }
   
   .header li {
@@ -33,12 +34,16 @@
   .header a {
     text-decoration: none;
     font-size: 1.5rem;
-    color: #fcb8d2;
+    color: rgba(255, 255, 255, 0.8);
   }
   
   .header a:hover,
   .header a:active,
   .header a.active {
-    color: white;
+    color: #fff;
   }
   
+  .login {
+    position: absolute;
+    right: 2rem;
+  }
