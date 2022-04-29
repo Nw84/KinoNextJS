@@ -1,7 +1,25 @@
 .detail {
-    text-align: center;
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+    margin: 3rem auto;
+    width: 60vw;
 }
 
-.detail img {
-    width: 100%;
+.image {
+    height: 26rem;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem;
+    background-color: #fff;
+    color: #000;
+}
+
+.content h1 {
+   font-size: 2rem;
+   text-shadow: 2px 2px rgba(0, 0, 0, 0.2);
 }
