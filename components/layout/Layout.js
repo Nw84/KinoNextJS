@@ -1,5 +1,4 @@
 import MainNavigation from "./MainNavigation";
-import MainHero from "./MainHero";
 import classes from "./Layout.module.css";
 
 function Layout(props) {
