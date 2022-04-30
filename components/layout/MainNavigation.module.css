@@ -31,19 +31,18 @@
     margin-left: 3rem;
   }
   
-  .header a {
+  .mainMenuText {
     text-decoration: none;
     font-size: 1.5rem;
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 0.582);
   }
   
-  .header a:hover,
-  .header a:active,
-  .header a.active {
+  .mainMenuText:hover,
+  .mainMenuText.active {
     color: #fff;
   }
-  
-  .login {
+
+    .login {
     position: absolute;
     right: 2rem;
   }

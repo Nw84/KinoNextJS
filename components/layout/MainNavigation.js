@@ -1,6 +1,6 @@
 import classes from './MainNavigation.module.css';
 import Link from 'next/link';
-import { useRouter } from 'next/dist/client/router';
+import { useRouter } from 'next/router';
 
 function MainNavigation() {
 
