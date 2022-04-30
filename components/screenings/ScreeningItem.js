@@ -12,8 +12,8 @@ function ScreeningItem(props) {
                 <div className={classes.content}>
                     <div className={classes.contentInner}>
                         <h2 className={classes.title}>{props.title}</h2>
-                        <p className={classes.date}>Datum: {props.date}</p>
-                        <p className={classes.seats}>Lediga platser: {props.seats}</p>
+                        <p>Datum: {props.date}</p>
+                        <p>Lediga platser: {props.seats}</p>
                         <p>Betyg: 4.5/5</p>
                         <Button>Boka</Button>
 
