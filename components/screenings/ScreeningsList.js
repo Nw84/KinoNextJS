@@ -12,6 +12,7 @@ function ScreeningsList(props) {
                     title={screening.title}
                     date={screening.date}
                     seats={screening.seats}
+                    time={screening.time}
                 />
             ))}
         </ul>

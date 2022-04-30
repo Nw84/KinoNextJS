@@ -40,7 +40,8 @@ export async function getServerSideProps(context) {
                 id: screening._id.toString(),
                 date: screening.date,
                 image: screening.image,
-                seats: screening.Seats
+                seats: screening.Seats,
+                time: screening.time
             })),
             list: list,
             name: name
