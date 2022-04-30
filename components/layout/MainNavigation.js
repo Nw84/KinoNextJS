@@ -25,12 +25,12 @@ function MainNavigation() {
                     </li>
                     <li>
                         <Link href='/aboutus/history'>
-                            <a className={router.pathname == '/aboutus/history' ? `${classes.active} ${classes.mainMenuText}` : `${classes.mainMenuText}`}>Om oss</a>
+                            <a className={router.pathname.slice(0, 8) == '/aboutus' ? `${classes.active} ${classes.mainMenuText}` : `${classes.mainMenuText}`}>Om oss</a>
                         </Link>
                     </li>
                     <li>
                         <Link href='/contact'>
-                            <a className={router.pathname == '/contact' ? `${classes.active} ${classes.mainMenuText}` : `${classes.mainMenuText}`}>Kontakt</a>
+                            <a className={router.pathname.slice(0, 8) == '/contact' ? `${classes.active} ${classes.mainMenuText}` : `${classes.mainMenuText}`}>Kontakt</a>
                         </Link>
                     </li>
                     <li className={classes.login}>
