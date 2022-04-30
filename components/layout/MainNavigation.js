@@ -1,30 +1,42 @@
 import classes from './MainNavigation.module.css';
-import Link from "next/link";
+import Link from 'next/link';
+import { useRouter } from 'next/dist/client/router';
 
 function MainNavigation() {
 
+    const router = useRouter();
+
     return (
         <header className={classes.header}>
-            <a
-                className={classes.logo}
-                href='/'>
-            </a>
+            <Link href='/'>
+                <a className={classes.logo} />
+            </Link>
             <nav>
                 <ul>
                     <li>
-                        <Link href='/movies'>Filmer</Link>
+                        <Link href='/movies'>
+                            <a className={router.pathname == '/movies' ? `${classes.active} ${classes.mainMenuText}` : `${classes.mainMenuText}`}>Filmer</a>
+                        </Link>
                     </li>
                     <li>
-                        <Link href='/tickets'>Biljetter</Link>
+                        <Link href='/tickets'>
+                            <a className={router.pathname == '/tickets' ? `${classes.active} ${classes.mainMenuText}` : `${classes.mainMenuText}`}>Biljetter</a>
+                        </Link>
                     </li>
                     <li>
-                        <Link href='/aboutus'>Om oss</Link>
+                        <Link href='/aboutus/history'>
+                            <a className={router.pathname == '/aboutus/history' ? `${classes.active} ${classes.mainMenuText}` : `${classes.mainMenuText}`}>Om oss</a>
+                        </Link>
                     </li>
                     <li>
-                        <Link href='/contact'>Kontakt</Link>
+                        <Link href='/contact'>
+                            <a className={router.pathname == '/contact' ? `${classes.active} ${classes.mainMenuText}` : `${classes.mainMenuText}`}>Kontakt</a>
+                        </Link>
                     </li>
                     <li className={classes.login}>
-                        <Link href='/login'>Logga in</Link>
+                        <Link href='/login'>
+                            <a className={router.pathname == '/login' ? `${classes.active} ${classes.mainMenuText}` : `${classes.mainMenuText}`}>Logga in</a>
+                        </Link>
                     </li>
                 </ul>
             </nav>
