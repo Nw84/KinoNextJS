@@ -7,14 +7,18 @@ function ScreeningItem(props) {
             <div className={classes.card}>
                 <div className={classes.image}>
                     <img src={props.image} alt={props.title} />
+                    <span className={classes.tag}>{props.time}</span>
                 </div>
                 <div className={classes.content}>
-                    <h2>{props.title}</h2>
-                    <h6>{props.date}</h6>
-                    <h6>{props.seats}</h6>
-                </div>
-                <div className={classes.actions}>
-                    <Button>Boka</Button>
+                    <div className={classes.contentInner}>
+                        <h2 className={classes.title}>{props.title}</h2>
+                        <p>Datum: {props.date}</p>
+                        <p>Lediga platser: {props.seats}</p>
+                        <p>Betyg: 4.5/5</p>
+                        <div className={classes.btnContainer}>
+                            <Button>Boka</Button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </li>
