@@ -15,8 +15,9 @@ function ScreeningItem(props) {
                         <p>Datum: {props.date}</p>
                         <p>Lediga platser: {props.seats}</p>
                         <p>Betyg: 4.5/5</p>
-                        <Button>Boka</Button>
-
+                        <div className={classes.btnContainer}>
+                            <Button>Boka</Button>
+                        </div>
                     </div>
                 </div>
             </div>
