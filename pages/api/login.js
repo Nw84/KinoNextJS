@@ -1,9 +1,10 @@
 import bcrypt from "bcrypt";
 import Cookies from "cookies";
 import { getUser } from "../../helpers/getUser";
+import Iron from "@hapi/iron";
 
-//export const ENC_KEY =
-//  "$2a$10$87U6ONWv6uQMOqyq5hUrmuqPtcnW/YT7.wUluD183dchvv2srRdRW";
+export const ENC_KEY =
+    "v<4h*y!9:wGz,=vkxrP.#9P8dT!ua%=;S56qQ}Nn32`3RXhu}}8y'?_>J9<E&Dz*";
 
 export default async function loginHandler(req, res) {
 
@@ -21,7 +22,14 @@ export default async function loginHandler(req, res) {
 
         if (isCorrect) {
             const cookies = new Cookies(req, res);
-            cookies.set("loggedin", "yes");
+            cookies.set("loggedin", await Iron.seal(
+                {
+                    username: username,
+                    loggedIn: true,
+                }, ENC_KEY,
+                Iron.defaults
+            )
+            );
             res.status(200).end();
         } else {
             res.status(405).end();

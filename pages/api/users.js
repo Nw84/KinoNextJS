@@ -1,5 +1,6 @@
-import { regUser } from "../../helpers/getUser";
 import bcrypt from "bcrypt";
+import { regUser } from "../../helpers/getUser";
+
 
 export default async function userHandler(req, res) {
     if (req.method == "POST") {
