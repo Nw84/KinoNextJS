@@ -1,4 +1,3 @@
-import { MongoClient } from "mongodb";
 import { regUser } from "../../helpers/getUser";
 import bcrypt from "bcrypt";
 
