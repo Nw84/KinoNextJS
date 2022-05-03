@@ -1,33 +1,46 @@
 import bcrypt from "bcrypt";
 import Cookies from "cookies";
-import { getAllUsers } from "../../helpers/getAllUsers";
+import { getUser } from "../../helpers/getUser";
+
+//export const ENC_KEY =
+//  "$2a$10$87U6ONWv6uQMOqyq5hUrmuqPtcnW/YT7.wUluD183dchvv2srRdRW";
 
 export default async function loginHandler(req, res) {
-    const users = await getAllUsers();
-    const mapped = users.map((user) => {
-        if (req.body.username == user.name) {
-            if (req.body.password == user.password) {
-                console.log("Hej")
-            }
-        }
-    })
-
-    console.log(users[0].password)
-
 
     if (req.method == "POST") {
-        console.log(req.body)
         const { username, password } = req.body;
+        const user = await getUser(username);
+        console.log(user)
 
-        //const isCorrect = await bcrypt.compare(req.body.password, "okay")
+        // const inpPwd = JSON.stringify(password);
+        // const dbPwd = JSON.stringify(user[0].password)
 
+        const isCorrect = await bcrypt.compare(password, user[0].password)
 
+        console.log(isCorrect)
 
-        if (req.body.password == users[0].password) {
+        if (isCorrect) {
             const cookies = new Cookies(req, res);
             cookies.set("loggedin", "yes");
+            res.status(200).end();
+        } else {
+            res.status(405).end();
         }
-
-        res.status(200).end();
     }
 }
+
+//            const cookies = new Cookies(req, res);
+//                 cookies.set("loggedin", "yes");
+//             }
+
+//             res.status(200).end();
+//            const cookies = new Cookies(req, res);
+//                 cookies.set("loggedin", "yes");
+//             }
+
+//             res.status(200).end();
+//            const cookies = new Cookies(req, res);
+//                 cookies.set("loggedin", "yes");
+//             }
+
+//             res.status(200).end();
