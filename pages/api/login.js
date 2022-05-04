@@ -35,19 +35,3 @@ export default async function loginHandler(req, res) {
         }
     }
 }
-
-//            const cookies = new Cookies(req, res);
-//                 cookies.set("loggedin", "yes");
-//             }
-
-//             res.status(200).end();
-//            const cookies = new Cookies(req, res);
-//                 cookies.set("loggedin", "yes");
-//             }
-
-//             res.status(200).end();
-//            const cookies = new Cookies(req, res);
-//                 cookies.set("loggedin", "yes");
-//             }
-
-//             res.status(200).end();

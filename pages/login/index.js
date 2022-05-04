@@ -3,7 +3,8 @@ import Iron from "@hapi/iron";
 import { ENC_KEY } from "../api/login";
 import { useRouter } from "next/router";
 import Button from "../../components/ui/Button";
-
+import LoginForm from "../../components/login/LoginForm";
+import RegistrationForm from "../../components/login/RegistrationForm";
 import { useState } from "react";
 
 function login(props) {
@@ -11,9 +12,9 @@ function login(props) {
     const [password, setPassword] = useState("");
     const [user, setUser] = useState("");
     const [pwd, setPwd] = useState("");
+    const [pageState, setPageState] = useState("login");
 
     const router = useRouter();
-
 
     async function handleLogout(event) {
         event.preventDefault();
@@ -30,12 +31,7 @@ function login(props) {
         router.push("/login");
     }
 
-
-
-
-    async function handleSubmit(event) {
-        event.preventDefault();
-
+    async function handleSubmit() {
         await fetch("/api/login", {
             method: "POST",
             body: JSON.stringify({
@@ -63,7 +59,6 @@ function login(props) {
             }
         });
     }
-
     if (props.loggedIn) {
         return (
             <div>
@@ -71,47 +66,29 @@ function login(props) {
                 <Button onClick={handleLogout}>Logga ut</Button>
             </div>
         )
-    } else {
+    } if (pageState == "login") {
         return (
             <div>
-                <h1>Logga in</h1>
-                <form onSubmit={handleSubmit} >
-                    <input
-                        placeholder="Användarnamn"
-                        type="text"
-                        value={username}
-                        onChange={(ev) => setUsername(ev.target.value)}
-                    />
-                    <input
-                        placeholder="Lösenord"
-                        type="password"
-                        value={password}
-                        onChange={(ev) => setPassword(ev.target.value)}
-                    />
-                    <input type="radio" value="cookies" />Allow cookies
-                    <input type="submit" />
-                </form>
-                <h1>Registrera Användare</h1>
-                <form onSubmit={handleRegistration} >
-                    <input
-                        placeholder="Användarnamn"
-                        type="text"
-                        value={user}
-                        onChange={(ev) => setUser(ev.target.value)}
-                    />
-                    <input
-                        placeholder="Lösenord"
-                        type="password"
-                        value={pwd}
-                        onChange={(ev) => setPwd(ev.target.value)}
-                    />
-                    <input type="submit" />
-                </form>
+                <LoginForm handleSubmit={handleSubmit} setPassword={setPassword} setUsername={setUsername} />
+                <div>
+                    <p>Har du inget konto ? Klicka här för att registrera dig</p>
+                    <Button onClick={() => setPageState("registration")}>Registrera Konto</Button>  
+                </div>
             </div>
         )
-    }
+    } else if (pageState == "registration") {
+        return (
+            <div>
+                <RegistrationForm handleSubmit={handleSubmit} setUser={setUser} setPwd={setPwd} />
+                <div>
+                    <p>Har du redan ett konto, så logga in här</p>
+                    <Button onClick={() => setPageState("login")}>Logga in</Button>
+                </div>
+            </div>
+            
+        )  
+    }    
 }
-
 
 export async function getServerSideProps(context) {
     const cookies = new Cookies(context.req, context.res);
@@ -131,7 +108,6 @@ export async function getServerSideProps(context) {
             // Incorrect encrypted string. Proceed to notFound
         }
     }
-
     return {
         props: {
             loggedIn: false
