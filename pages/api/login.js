@@ -11,27 +11,26 @@ export default async function loginHandler(req, res) {
     if (req.method == "POST") {
         const { username, password } = req.body;
         const user = await getUser(username);
-        console.log(user)
 
-        // const inpPwd = JSON.stringify(password);
-        // const dbPwd = JSON.stringify(user[0].password)
+        if (user.length > 0) {
+            const isCorrect = await bcrypt.compare(password, user[0].password)
 
-        const isCorrect = await bcrypt.compare(password, user[0].password)
-
-        console.log(isCorrect)
-
-        if (isCorrect) {
-            const cookies = new Cookies(req, res);
-            cookies.set("loggedin", await Iron.seal(
-                {
-                    username: username,
-                    loggedIn: true,
-                }, ENC_KEY,
-                Iron.defaults
-            )
-            );
-            res.status(200).end();
+            if (isCorrect) {
+                const cookies = new Cookies(req, res);
+                cookies.set("loggedin", await Iron.seal(
+                    {
+                        username: username,
+                        loggedIn: true,
+                    }, ENC_KEY,
+                    Iron.defaults
+                )
+                );
+                res.status(200).end();
+            } else {
+                res.json("Felaktigt lösenord")
+            }
         } else {
+            res.json("Det finns ingen användare med det namnet")
             res.status(405).end();
         }
     }

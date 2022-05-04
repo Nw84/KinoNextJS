@@ -2,6 +2,7 @@ import Cookies from "cookies";
 import Iron from "@hapi/iron";
 import { ENC_KEY } from "../api/login";
 import { useRouter } from "next/router";
+import Button from "../../components/ui/Button";
 
 import { useState } from "react";
 
@@ -12,6 +13,25 @@ function login(props) {
     const [pwd, setPwd] = useState("");
 
     const router = useRouter();
+
+
+    async function handleLogout(event) {
+        event.preventDefault();
+
+        await fetch("/api/logout", {
+            method: "POST",
+            body: JSON.stringify({
+                logout: true
+            }),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+        router.push("/login");
+    }
+
+
+
 
     async function handleSubmit(event) {
         event.preventDefault();
@@ -46,7 +66,10 @@ function login(props) {
 
     if (props.loggedIn) {
         return (
-            <div>Hej</div>
+            <div>
+                <h1>Välkommen tillbaka</h1>
+                <Button onClick={handleLogout}>Logga ut</Button>
+            </div>
         )
     } else {
         return (
