@@ -14,8 +14,7 @@ export default async function userHandler(req, res) {
                     password: hash
                 }
             
-                const result = await regUser(data);
-                console.log(result);
+                const result = await regUser(data);               
             })
         });
         res.status(200).end();

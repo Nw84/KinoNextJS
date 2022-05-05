@@ -10,11 +10,13 @@ function LoginForm({ handleSubmit, setPassword, setUsername }) {
       <h1>Logga in</h1>
       <form onSubmit={submitLogin}>
         <input
+          autoComplete="Ange ditt användarnamn"
           placeholder="Användarnamn"
           type="text"
           onChange={(ev) => setUsername(ev.target.value)}
         />
         <input
+          autoComplete="Ange ditt lösenord"
           placeholder="Lösenord"
           type="password"
           onChange={(ev) => setPassword(ev.target.value)}

@@ -7,7 +7,7 @@ import LoginForm from "../../components/login/LoginForm";
 import RegistrationForm from "../../components/login/RegistrationForm";
 import { useState } from "react";
 
-function login(props) {
+function Login(props) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [user, setUser] = useState("");
@@ -16,8 +16,7 @@ function login(props) {
 
     const router = useRouter();
 
-    async function handleLogout(event) {
-        event.preventDefault();
+    async function handleLogout() {
 
         await fetch("/api/logout", {
             method: "POST",
@@ -45,9 +44,9 @@ function login(props) {
         router.push("/login");
     }
 
-    async function handleRegistration(event) {
-        event.preventDefault();
-
+    async function handleRegistration() {
+        console.log(user);
+        console.log(pwd);
         await fetch("/api/users", {
             method: "POST",
             body: JSON.stringify({
@@ -79,7 +78,7 @@ function login(props) {
     } else if (pageState == "registration") {
         return (
             <div>
-                <RegistrationForm handleSubmit={handleSubmit} setUser={setUser} setPwd={setPwd} />
+                <RegistrationForm handleRegistration={handleRegistration} setUser={setUser} setPwd={setPwd} />
                 <div>
                     <p>Har du redan ett konto, så logga in här</p>
                     <Button onClick={() => setPageState("login")}>Logga in</Button>
@@ -117,4 +116,4 @@ export async function getServerSideProps(context) {
 
 
 
-export default login;
+export default Login;

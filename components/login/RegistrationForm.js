@@ -1,6 +1,5 @@
 function RegistrationForm({ handleRegistration, setUser, setPwd }) {
-  function submitRegistration(event) {
-    event.preventDefault();
+  function submitRegistration() {
 
     handleRegistration();
   }
@@ -10,11 +9,13 @@ function RegistrationForm({ handleRegistration, setUser, setPwd }) {
       <h1>Registrera Användare</h1>
       <form onSubmit={submitRegistration}>
         <input
+          autoComplete="Mitt unika användarnamn"
           placeholder="Användarnamn"
           type="text"
           onChange={(ev) => setUser(ev.target.value)}
         />
         <input
+          autoComplete="Mitt säkra lösenord"
           placeholder="Lösenord"
           type="password"          
           onChange={(ev) => setPwd(ev.target.value)}
