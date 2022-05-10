@@ -1,0 +1,16 @@
+.title {
+    font-size: 2rem;
+}
+
+.container {
+    margin: 0 auto;
+    margin-bottom: 3rem;
+    width: 60vw;
+    background-color: #fff;
+    color: #000;
+}
+
+.container ul {
+    list-style: none;
+    padding: 0;
+}
