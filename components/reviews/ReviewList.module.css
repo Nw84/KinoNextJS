@@ -3,7 +3,7 @@
 }
 
 .container {
-    margin: auto;
+    margin: 0 auto;
     margin-bottom: 3rem;
     width: 60vw;
     background-color: #fff;
