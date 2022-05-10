@@ -24,6 +24,5 @@
 
 .comment {
     overflow-wrap: break-word;
-    overflow-y: scroll;
     margin: 1rem;
 }
