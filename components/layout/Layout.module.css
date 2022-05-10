@@ -3,3 +3,8 @@
   width: 90%;
   max-width: 40rem;
 }
+
+.main {
+  margin: 0 auto;
+  min-height: calc(100vh - 21rem);
+}
