@@ -2,14 +2,52 @@ import { MongoClient, ObjectId } from "mongodb";
 import MovieDetails from "../../../components/movies/MovieDetails";
 import ReviewList from "../../../components/reviews/reviewList";
 import { getReviews } from "../../../helpers/getReviews";
+import ReviewForm from "../../../components/reviews/ReviewForm";
+import { useState } from "react";
+import { useRouter } from "next/router";
 
 function movieDetails(props) {
+    const [rating, setRating] = useState(1);
+    const [review, setReview] = useState("");
+    const [name, setName] = useState("");
+
+    const router = useRouter();
+    
+    async function handleReview() {
+        await fetch("/api/review", {
+            method: "POST",
+            body: JSON.stringify({
+                name,
+                rating,
+                comment: review,
+                movieId: props.movieId,
+                date: new Date()
+            }),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+        setName("");
+        setReview("");
+        setRating(1);
+        router.push("/movies/" + props.movieId);
+    }
+
     return (
         <>
             <MovieDetails
                 image={props.movieData.image}
                 title={props.movieData.title}
                 description={props.movieData.description} />
+
+            <ReviewForm 
+                handleReview={handleReview}
+                setRating={setRating}
+                rating={rating}
+                setName={setName} 
+                name={name}
+                setReview={setReview}
+                review={review} />
 
             <ReviewList
                 reviews={props.reviews} />
@@ -58,7 +96,8 @@ export async function getStaticProps(context) {
                 name: review.name,
                 rating: review.rating,
                 comment: review.comment,
-            }))       
+            })),  
+            movieId: movieID,    
         }
     }
 }
