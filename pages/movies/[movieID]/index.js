@@ -1,30 +1,7 @@
 import { MongoClient, ObjectId } from "mongodb";
 import MovieDetails from "../../../components/movies/MovieDetails";
 import ReviewList from "../../../components/reviews/reviewList";
-
-const DUMMY_REVIEWS = [
-    {
-        id: "1",
-        movieId: "62601d5146c59a981d84c680",
-        name: "Bosse",
-        rating: 4.5,
-        comment: "Väldigt rolig film"
-    },
-    {
-        id: "2",
-        movieId: "62601d5146c59a981d84c680",
-        name: "Emma",
-        rating: 2,
-        comment: "Somnade halvvägs in"
-    },
-    {
-        id: "3",
-        movieId: "62601d5146c59a981d84c680",
-        name: "AnnaKarinOlsson",
-        rating: 3,
-        comment: "Detta var den bästa film jag sett."
-    }
-];
+import { getReviews } from "../../../helpers/getReviews";
 
 function movieDetails(props) {
     return (
@@ -34,8 +11,8 @@ function movieDetails(props) {
                 title={props.movieData.title}
                 description={props.movieData.description} />
 
-            <ReviewList  
-                reviews={DUMMY_REVIEWS} />
+            <ReviewList
+                reviews={props.reviews} />
         </>
     )
 }
@@ -64,6 +41,8 @@ export async function getStaticProps(context) {
     const postersCollection = db.collection("moviePosters");
     const selectedMovie = await postersCollection.findOne({ _id: ObjectId(movieID) })
 
+    const reviews = await getReviews(movieID);
+
     client.close();
 
     return {
@@ -74,10 +53,14 @@ export async function getStaticProps(context) {
                 image: selectedMovie.image,
                 description: selectedMovie.description,
             },
+            reviews: reviews.map((review) => ({
+                id: review._id.toString(),
+                name: review.name,
+                rating: review.rating,
+                comment: review.comment,
+            }))       
         }
     }
 }
-
-
 
 export default movieDetails; 
