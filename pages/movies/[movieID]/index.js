@@ -109,7 +109,6 @@ export async function getStaticProps(context) {
     const movieID = context.params.movieID;
     const selectedMovie = await getOnePoster(movieID)
     const reviews = await getReviews(movieID);
-    console.log(reviews)
 
     return {
         props: {
