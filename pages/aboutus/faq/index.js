@@ -7,17 +7,17 @@ function faq() {
         <AboutUsNavigation />
         <div className={classes.aboutUsSpace}>
             <div className={classes.aboutUsItem}>
-                <h1>Frågor och svar</h1>                
-                <h2>Lorem ipsum</h2>
-                <h3>Sed ut perspiciatis unde omnis iste natus error.</h3>
-                <h2>Lorem ipsum</h2>
-                <h3>Sit voluptatem accusantium doloremque laudantium,totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta
-                sunt explicabo.</h3>
-                <h2>Lorem ipsum</h2>
-                <h3>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit</h3>
-                <h2>Lorem ipsum</h2>
-                <h3>Sed quia
-                consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</h3>
+                <h1>Frågor och svar</h1>
+                <h2>Giltighetstid på presentkort och biljetter</h2>
+                <h3>Presentkort är giltiga i ett år från inköpsdatum. Biljetter är giltiga endast den dag och tid du har bokat</h3>
+                <h2>Återköp</h2>
+                <h3>Vi har tyvärr ingen möjlighet att återköpa biljetter eller presentkort.</h3>
+                <h2>GDPR</h2>
+                <h3>För oss är våra kunders förtroende av allra största vikt. Vi vet att det förtroendet bland annat bygger på hur vi hanterar
+                    den information vi samlar in om dig som kund och vår förmåga att skydda din integritet. Vi utför all insamling och behandling av personuppgifter i enlighet med gällande
+                    integritetsskyddslagstiftning. Vi strävar alltid efter att minimera de uppgifter vi behandlar och vi säljer aldrig dina personuppgifter till andra företag.
+                    Syftet med denna personuppgiftspolicy är att på ett så tydligt och transparent sätt som möjligt beskriva hur vi samlar in och använder personuppgifter och vad du som kund
+                    har rätt att begära av oss när det gäller den hanteringen.</h3>
             </div>
 
         </div>
