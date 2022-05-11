@@ -1,4 +1,4 @@
-import { postReview } from "../../helpers/getReviews";
+import { postReview } from "../../helpers/reviewHelper";
 
 export default async function handler(req, res) {
     if(req.method === "POST") {

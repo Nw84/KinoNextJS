@@ -1,7 +1,6 @@
 import { useRouter } from "next/router";
 import { Fragment } from "react";
-import Link from "next/link";
-import { getSpecifikScreenings, getMovieList } from "../../helpers/getScreenings";
+import { getSpecifikScreenings, getMovieList } from "../../helpers/screeningHelper";
 import ScreeningsList from "../../components/screenings/ScreeningsList";
 import ScreeningSearch from "../../components/screenings/Screening-search";
 
@@ -36,11 +35,11 @@ export async function getServerSideProps(context) {
     return {
         props: {
             screenings: screenings.map((screening) => ({
-                title: screening.movie,
+                title: screening.title,
                 id: screening._id.toString(),
                 date: screening.date,
-                image: screening.image,
-                seats: screening.Seats,
+                poster: screening.poster,
+                seats: screening.seats,
                 time: screening.time
             })),
             list: list,

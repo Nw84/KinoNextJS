@@ -1,11 +1,11 @@
-import { MongoClient, ObjectId } from "mongodb";
 import MovieDetails from "../../../components/movies/MovieDetails";
 import ReviewList from "../../../components/reviews/reviewList";
-import { getReviews } from "../../../helpers/getReviews";
+import { getReviews } from "../../../helpers/reviewHelper";
 import ReviewForm from "../../../components/reviews/ReviewForm";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import classes from "../../../styles/movieId.module.css";
+import { pathHelper, getOnePoster } from "../../../helpers/posterHelper";
 
 function movieDetails(props) {
     const [rating, setRating] = useState(1);
@@ -23,8 +23,6 @@ function movieDetails(props) {
         setLow(low - 5)
         setHigh(high - 5)
     }
-
-
 
     const router = useRouter();
 
@@ -96,12 +94,7 @@ function movieDetails(props) {
 }
 
 export async function getStaticPaths() {
-    const client = await MongoClient.connect("mongodb+srv://Bosse:LKjRPJ2chOlxeM0E@cluster0.rpxxl.mongodb.net/moviePosters?retryWrites=true&w=majority");
-    const db = client.db();
-    const postersCollection = db.collection("moviePosters");
-    const posters = await postersCollection.find({}, { _id: 1 }).toArray();
-
-    client.close();
+    const posters = await pathHelper();
 
     return {
         fallback: false,
@@ -114,22 +107,16 @@ export async function getStaticPaths() {
 //Fetch data for a single movie
 export async function getStaticProps(context) {
     const movieID = context.params.movieID;
-    const client = await MongoClient.connect("mongodb+srv://Bosse:LKjRPJ2chOlxeM0E@cluster0.rpxxl.mongodb.net/moviePosters?retryWrites=true&w=majority");
-    const db = client.db();
-    const postersCollection = db.collection("moviePosters");
-    const selectedMovie = await postersCollection.findOne({ _id: ObjectId(movieID) })
-
+    const selectedMovie = await getOnePoster(movieID)
     const reviews = await getReviews(movieID);
-
-
-    client.close();
+    console.log(reviews)
 
     return {
         props: {
             movieData: {
                 id: selectedMovie._id.toString(),
                 title: selectedMovie.title,
-                image: selectedMovie.image,
+                image: selectedMovie.poster,
                 description: selectedMovie.description,
             },
             reviews: reviews.map((review) => ({

@@ -8,7 +8,7 @@ function ScreeningsList(props) {
                 <ScreeningItem
                     key={screening.id}
                     id={screening.id}
-                    image={screening.image}
+                    poster={screening.poster}
                     title={screening.title}
                     date={screening.date}
                     seats={screening.seats}

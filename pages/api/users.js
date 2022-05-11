@@ -1,5 +1,5 @@
 import bcrypt from "bcrypt";
-import { regUser } from "../../helpers/getUser";
+import { regUser } from "../../helpers/userHelper";
 
 
 export default async function userHandler(req, res) {
