@@ -45,6 +45,8 @@ function movieDetails(props) {
         setName("");
         setReview("");
         setRating(1);
+        setLow(0)
+        setHigh(5)
         router.push("/movies/" + props.movieId);
     }
 
@@ -55,31 +57,39 @@ function movieDetails(props) {
                 title={props.movieData.title}
                 description={props.movieData.description} />
 
-            <ReviewForm
-                handleReview={handleReview}
-                setRating={setRating}
-                rating={rating}
-                setName={setName}
-                name={name}
-                setReview={setReview}
-                review={review} />
+            <div className={classes.reviewContainer}>
+                <ReviewList
+                    reviews={props.reviews.slice(low, high)} />
+                <div className={classes.btnContainer}>
+                    <h4> Recensioner
+                        {props.reviews.length < high ? " " + low + "-" + props.reviews.length :
+                            " " + low + "-" + high
+                        }
+                    </h4>
 
-            <ReviewList
-                reviews={props.reviews.slice(low, high)} />
-            <div className={classes.btnContainer}>
-                <h4>Recensioner {low}-{high}</h4>
-                <button
-                    className={classes.btn}
-                    disabled={low === 0}
-                    onClick={previousHandler}>
-                    Föregående
-                </button>
-                <button
-                    className={classes.btn}
-                    disabled={high + 1 > props.reviews.length}
-                    onClick={nextHandler}>
-                    Nästa
-                </button>
+                    <button
+                        className={classes.btn}
+                        disabled={low === 0}
+                        onClick={previousHandler}>
+                        Föregående
+                    </button>
+                    <button
+                        className={classes.btn}
+                        disabled={high + 1 > props.reviews.length}
+                        onClick={nextHandler}>
+                        Nästa
+                    </button>
+                </div>
+                <div className={classes.reviewFormContainer}>
+                    <ReviewForm
+                        handleReview={handleReview}
+                        setRating={setRating}
+                        rating={rating}
+                        setName={setName}
+                        name={name}
+                        setReview={setReview}
+                        review={review} />
+                </div>
             </div>
         </>
     )
