@@ -5,14 +5,29 @@ import { getReviews } from "../../../helpers/getReviews";
 import ReviewForm from "../../../components/reviews/ReviewForm";
 import { useState } from "react";
 import { useRouter } from "next/router";
+import classes from "../../../styles/movieId.module.css";
 
 function movieDetails(props) {
     const [rating, setRating] = useState(1);
     const [review, setReview] = useState("");
     const [name, setName] = useState("");
+    const [low, setLow] = useState(0);
+    const [high, setHigh] = useState(5);
+
+    function nextHandler() {
+        setLow(low + 5)
+        setHigh(high + 5)
+    }
+
+    function previousHandler() {
+        setLow(low - 5)
+        setHigh(high - 5)
+    }
+
+
 
     const router = useRouter();
-    
+
     async function handleReview() {
         await fetch("/api/review", {
             method: "POST",
@@ -40,17 +55,32 @@ function movieDetails(props) {
                 title={props.movieData.title}
                 description={props.movieData.description} />
 
-            <ReviewForm 
+            <ReviewForm
                 handleReview={handleReview}
                 setRating={setRating}
                 rating={rating}
-                setName={setName} 
+                setName={setName}
                 name={name}
                 setReview={setReview}
                 review={review} />
 
             <ReviewList
-                reviews={props.reviews} />
+                reviews={props.reviews.slice(low, high)} />
+            <div className={classes.btnContainer}>
+                <h4>Recensioner {low}-{high}</h4>
+                <button
+                    className={classes.btn}
+                    disabled={low === 0}
+                    onClick={previousHandler}>
+                    Föregående
+                </button>
+                <button
+                    className={classes.btn}
+                    disabled={high + 1 > props.reviews.length}
+                    onClick={nextHandler}>
+                    Nästa
+                </button>
+            </div>
         </>
     )
 }
@@ -81,6 +111,7 @@ export async function getStaticProps(context) {
 
     const reviews = await getReviews(movieID);
 
+
     client.close();
 
     return {
@@ -96,8 +127,8 @@ export async function getStaticProps(context) {
                 name: review.name,
                 rating: review.rating,
                 comment: review.comment,
-            })),  
-            movieId: movieID,    
+            })),
+            movieId: movieID,
         }
     }
 }

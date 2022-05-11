@@ -1,10 +1,10 @@
-import { MongoClient} from "mongodb";
+import { MongoClient } from "mongodb";
 
 export async function getReviews(id) {
     const client = await MongoClient.connect("mongodb+srv://kinoDB:tvqptJpqHLprzcF3@cluster0.km5pm.mongodb.net/reviewDB?retryWrites=true&w=majority");
     const db = client.db();
     const reviewsCollection = db.collection("reviews");
-    const reviews = await reviewsCollection.find({ movieId: id }).sort({ date: -1 }).limit(5).toArray();
+    const reviews = await reviewsCollection.find({ movieId: id }).sort({ date: -1 }).toArray();
 
     client.close();
 

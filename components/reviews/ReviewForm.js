@@ -1,3 +1,5 @@
+import classes from "./ReviewForm.module.css"
+
 function ReviewForm({ handleReview, setRating, setReview, setName, name, review, rating }) {
   function submitReview(ev) {
     ev.preventDefault();
@@ -6,10 +8,10 @@ function ReviewForm({ handleReview, setRating, setReview, setName, name, review,
   }
 
   return (
-    <div>
+    <div className={classes.container}>
       <h1>Skriv din recension för filmen </h1>
       <form onSubmit={submitReview}>
-      <input
+        <input
           autoComplete="Fyll i ditt namn"
           placeholder="Namn"
           type="text"
@@ -35,7 +37,7 @@ function ReviewForm({ handleReview, setRating, setReview, setName, name, review,
           <option value="4"> 4 </option>
           <option value="5"> 5 </option>
         </select>
-        
+
         <input type="submit" />
       </form>
     </div>
