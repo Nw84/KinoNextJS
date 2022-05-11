@@ -45,8 +45,6 @@ function Login(props) {
     }
 
     async function handleRegistration() {
-        console.log(user);
-        console.log(pwd);
         await fetch("/api/users", {
             method: "POST",
             body: JSON.stringify({

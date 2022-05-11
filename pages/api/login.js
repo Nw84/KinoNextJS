@@ -1,6 +1,6 @@
 import bcrypt from "bcrypt";
 import Cookies from "cookies";
-import { getUser } from "../../helpers/getUser";
+import { getUser } from "../../helpers/userHelper";
 import Iron from "@hapi/iron";
 
 export const ENC_KEY =

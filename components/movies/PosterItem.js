@@ -4,7 +4,7 @@ function PosterItem(props) {
     return (
         <li className={classes.item}>
             <div className={classes.image}>
-                <img src={props.image} alt={props.title} />
+                <img src={props.poster} alt={props.title} />
             </div>
         </li>
     )

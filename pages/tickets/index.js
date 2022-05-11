@@ -1,7 +1,6 @@
-
 import { useRouter } from "next/router";
 import ScreeningsList from "../../components/screenings/ScreeningsList";
-import { getAllScreenings, getMovieList } from "../../helpers/getScreenings";
+import { getAllScreenings, getMovieList } from "../../helpers/screeningHelper";
 import ScreeningSearch from "../../components/screenings/Screening-search";
 
 function tickets(props) {
@@ -10,7 +9,6 @@ function tickets(props) {
         const fullPath = `/tickets/${name}`;
         router.push(fullPath)
     }
-
 
     return <div>
         <h1>Biljetter</h1>
@@ -28,11 +26,11 @@ export async function getStaticProps() {
     return {
         props: {
             screenings: screenings.map((screening) => ({
-                title: screening.movie,
+                title: screening.title,
                 id: screening._id.toString(),
                 date: screening.date,
-                image: screening.image,
-                seats: screening.Seats,
+                poster: screening.poster,
+                seats: screening.seats,
                 time: screening.time
             })),
             list: list
