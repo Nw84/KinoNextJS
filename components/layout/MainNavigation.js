@@ -34,7 +34,7 @@ function MainNavigation() {
                         </Link>
                     </li>
                     <li>
-                        <Link href='/contact'>
+                        <Link href='/contact/contact'>
                             <a className={router.pathname.slice(0, 8) == '/contact' ? `${classes.active} ${classes.mainMenuText}` : `${classes.mainMenuText}`}>Kontakt</a>
                         </Link>
                     </li>
