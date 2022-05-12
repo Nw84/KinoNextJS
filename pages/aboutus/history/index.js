@@ -1,6 +1,5 @@
 import AboutUsNavigation from "../../../components/layout/AboutUsNavigation"
 import classes from "../../../styles/aboutUs.module.css";
-import Image from "next/image";
 
 function history() {
     return <div>
@@ -16,7 +15,7 @@ function history() {
             </div>
             <br></br>
             <div className={classes.bioImg}>
-                <Image src='/yhbio.jpg' alt="Image of the cinema in Ytterhogdal" />
+                <img src='/yhbio.jpg' alt="Image of the cinema in Ytterhogdal" />
             </div>
 
         </div>
