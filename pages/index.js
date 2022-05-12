@@ -1,7 +1,7 @@
 import { getAllMoviePosters } from "../helpers/posterHelper";
 import PosterList from "../components/movies/PosterList";
 import MainHero from "../components/layout/MainHero";
-import classes from "../styles/Home.module.css";
+import classes from "../styles/home.module.css";
 
 function HomePage(props) {
   return (

@@ -5,7 +5,12 @@ import { useRouter } from "next/router";
 import Button from "../../components/ui/Button";
 import LoginForm from "../../components/login/LoginForm";
 import RegistrationForm from "../../components/login/RegistrationForm";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+import React, { useContext } from "react";
+import { Context } from "../_app";
+
+import classes from "../../styles/login.module.css";
 
 function Login(props) {
     const [username, setUsername] = useState("");
@@ -13,11 +18,19 @@ function Login(props) {
     const [user, setUser] = useState("");
     const [pwd, setPwd] = useState("");
     const [pageState, setPageState] = useState("login");
+    const [loggedIn, setLoggedIn] = useContext(Context);
 
     const router = useRouter();
 
-    async function handleLogout() {
+    useEffect(() => {
+        if (props.loggedIn === true) {
+            setLoggedIn(true);
+        } else {
+            setLoggedIn(false);
+        }
+    });
 
+    async function handleLogout() {
         await fetch("/api/logout", {
             method: "POST",
             body: JSON.stringify({
@@ -56,35 +69,35 @@ function Login(props) {
             }
         });
     }
-    if (props.loggedIn) {
+    if (loggedIn) {
         return (
-            <div>
+            <div className={classes.loginContainer}>
                 <h1>Välkommen tillbaka</h1>
                 <Button onClick={handleLogout}>Logga ut</Button>
             </div>
         )
     } if (pageState == "login") {
         return (
-            <div>
+            <div className={classes.loginContainer}>
                 <LoginForm handleSubmit={handleSubmit} setPassword={setPassword} setUsername={setUsername} />
                 <div>
                     <p>Har du inget konto ? Klicka här för att registrera dig</p>
-                    <Button onClick={() => setPageState("registration")}>Registrera Konto</Button>  
+                    <Button onClick={() => setPageState("registration")}>Registrera Konto</Button>
                 </div>
             </div>
         )
     } else if (pageState == "registration") {
         return (
-            <div>
+            <div className={classes.loginContainer}>
                 <RegistrationForm handleRegistration={handleRegistration} setUser={setUser} setPwd={setPwd} />
                 <div>
                     <p>Har du redan ett konto, så logga in här</p>
                     <Button onClick={() => setPageState("login")}>Logga in</Button>
                 </div>
             </div>
-            
-        )  
-    }    
+
+        )
+    }
 }
 
 export async function getServerSideProps(context) {

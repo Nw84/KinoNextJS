@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import ScreeningsList from "../../components/screenings/ScreeningsList";
 import { getAllScreenings, getMovieList } from "../../helpers/screeningHelper";
 import ScreeningSearch from "../../components/screenings/Screening-search";
+import classes from "../../styles/tickets.module.css"
 
 function tickets(props) {
     const router = useRouter();
@@ -10,7 +11,7 @@ function tickets(props) {
         router.push(fullPath)
     }
 
-    return <div>
+    return <div className={classes.tickets}>
         <h1>Biljetter</h1>
         <ScreeningSearch onSearch={onSearchHandler} list={props.list} />
         <ScreeningsList screenings={props.screenings} />
