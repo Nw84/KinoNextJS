@@ -2,12 +2,12 @@ import ContactNavigation from "../../../components/layout/ContactNavigation";
 
 import classes from "../../../styles/aboutUs.module.css";
 
-function contact() {
+function safety() {
     return <div>
         <ContactNavigation />
         <div className={classes.aboutUsSpace}>
             <div className={classes.aboutUsItem}>
-                <h1>Kontakt</h1>
+                <h1>Säkerhet</h1>
                 <h2>Giltighetstid på presentkort och biljetter</h2>
                 <h3>Presentkort är giltiga i ett år från inköpsdatum. Biljetter är giltiga endast den dag och tid du har bokat</h3>
                 <h2>Återköp</h2>
@@ -27,4 +27,4 @@ function contact() {
 
 }
 
-export default contact; 
+export default safety; 
