@@ -1,15 +1,21 @@
-import { MongoClient, ObjectId} from "mongodb";
+import { MongoClient, ObjectId } from "mongodb";
 
-export async function getAllMoviePosters() {
+export async function getAllMoviePosters(limit) {
     const client = await MongoClient.connect("mongodb+srv://mhema:W3oLvtX4YP8zHqHl@cluster0.xrrbw.mongodb.net/Kino_movie_DB?retryWrites=true&w=majority");
     const db = client.db();
     const postersCollection = db.collection("Movies");
-    const posters = await postersCollection.find().toArray();
+    let posters;
+    if (limit) {
+        posters = await postersCollection.find().limit(limit).toArray();
+    } else {
+        posters = await postersCollection.find().toArray();
+    }
 
     client.close();
 
     return posters;
 }
+
 
 export async function pathHelper() {
     const client = await MongoClient.connect("mongodb+srv://mhema:W3oLvtX4YP8zHqHl@cluster0.xrrbw.mongodb.net/Kino_movie_DB?retryWrites=true&w=majority");
