@@ -1,12 +1,14 @@
 import { MongoClient, ObjectId } from "mongodb";
 
-export async function getAllMoviePosters(limit) {
+export async function getAllMoviePosters(numberofposters) {
+    //If there is no input the function will return all posters
+
     const client = await MongoClient.connect("mongodb+srv://mhema:W3oLvtX4YP8zHqHl@cluster0.xrrbw.mongodb.net/Kino_movie_DB?retryWrites=true&w=majority");
     const db = client.db();
     const postersCollection = db.collection("Movies");
     let posters;
-    if (limit) {
-        posters = await postersCollection.find().limit(limit).toArray();
+    if (numberofposters) {
+        posters = await postersCollection.find().limit(numberofposters).toArray();
     } else {
         posters = await postersCollection.find().toArray();
     }

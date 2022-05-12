@@ -19,3 +19,8 @@
     margin: 0 auto;
     font-size:2vw;
 }
+
+.image {
+    width: 400px;
+    height: 600px;
+}
