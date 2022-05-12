@@ -8,7 +8,7 @@ export async function getAllMoviePosters(numberofposters) {
     const postersCollection = db.collection("Movies");
     let posters;
     if (numberofposters) {
-        posters = await postersCollection.find().limit(numberofposters).toArray();
+        posters = await postersCollection.find().limit(numberofposters).sort({ releaseDate: 1 }).toArray();
     } else {
         posters = await postersCollection.find().toArray();
     }
