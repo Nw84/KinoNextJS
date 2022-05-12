@@ -1,6 +1,6 @@
 import AboutUsNavigation from "../../components/layout/AboutUsNavigation"
 
-import classes from "../../styles/AboutUs.module.css";
+import classes from "../../styles/aboutUs.module.css";
 
 function aboutus() {
     return <div>

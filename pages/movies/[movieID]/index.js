@@ -7,12 +7,17 @@ import { useRouter } from "next/router";
 import classes from "../../../styles/movieId.module.css";
 import { pathHelper, getOnePoster } from "../../../helpers/posterHelper";
 
+import React, { useContext } from "react";
+import { Context } from "../../_app";
+
+
 function movieDetails(props) {
     const [rating, setRating] = useState(1);
     const [review, setReview] = useState("");
     const [name, setName] = useState("");
     const [low, setLow] = useState(0);
     const [high, setHigh] = useState(5);
+    const [context, setContext] = useContext(Context);
 
     function nextHandler() {
         setLow(low + 5)
@@ -79,14 +84,16 @@ function movieDetails(props) {
                     </button>
                 </div>
                 <div className={classes.reviewFormContainer}>
-                    <ReviewForm
-                        handleReview={handleReview}
-                        setRating={setRating}
-                        rating={rating}
-                        setName={setName}
-                        name={name}
-                        setReview={setReview}
-                        review={review} />
+                    {context === true ?
+                        <ReviewForm
+                            handleReview={handleReview}
+                            setRating={setRating}
+                            rating={rating}
+                            setName={setName}
+                            name={name}
+                            setReview={setReview}
+                            review={review} />
+                        : <h4>You have to be logged in to write a comment</h4>}
                 </div>
             </div>
         </>

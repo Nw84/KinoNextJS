@@ -1,8 +1,13 @@
 import classes from './MainNavigation.module.css';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import React, { useContext } from "react";
+import { Context } from "../../pages/_app";
+
+
 
 function MainNavigation() {
+    const [loggedIn, setLoggedIn] = useContext(Context);
 
     const router = useRouter();
 
@@ -35,7 +40,9 @@ function MainNavigation() {
                     </li>
                     <li className={classes.login}>
                         <Link href='/login'>
-                            <a className={router.pathname == '/login' ? `${classes.active} ${classes.mainMenuText}` : `${classes.mainMenuText}`}>Logga in</a>
+                            <a className={router.pathname == '/login' ? `${classes.active} ${classes.mainMenuText}` : `${classes.mainMenuText}`}>
+                                {loggedIn === false ? "logga in" : "logga ut"}
+                            </a>
                         </Link>
                     </li>
                 </ul>

@@ -6,7 +6,11 @@
 
 .aboutUsItem {
     margin: auto;
-    width: 70%;
+    max-width: 50vw;
+}   
+
+.aboutUsItem h1 {
+    text-align: center;
 }    
 
 .about-us-item img {
