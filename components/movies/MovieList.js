@@ -1,7 +1,5 @@
-import MovieLink from './MovieLink';
-
-import classes from './MovieList.module.css';
-
+import MovieLink from "./MovieLink";
+import classes from "./MovieList.module.css";
 
 function MovieList(props) {
     return (
@@ -11,6 +9,7 @@ function MovieList(props) {
                     key={poster.id}
                     id={poster.id}
                     title={poster.title}
+                    poster={poster.poster}
                 />
             ))}
         </ul>
