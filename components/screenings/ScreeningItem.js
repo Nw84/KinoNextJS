@@ -1,12 +1,13 @@
 import classes from './ScreeningItem.module.css';
 import Button from '../ui/Button';
+import Image from "next/image";
 
 function ScreeningItem(props) {
     return (
         <li className={classes.item}>
             <div className={classes.card}>
                 <div className={classes.image}>
-                    <img src={props.poster} alt={props.title} />
+                    <Image src={props.poster} alt={props.title} />
                     <span className={classes.tag}>{props.time}</span>
                 </div>
                 <div className={classes.content}>

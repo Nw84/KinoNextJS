@@ -1,9 +1,10 @@
 import classes from "./MovieDetails.module.css";
+import Image from "next/image";
 
 function MovieDetails(props) {
     return (
         <section className={classes.detail}>
-            <img
+            <Image
                 className={classes.image}
                 src={props.image}
                 alt={props.title}

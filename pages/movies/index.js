@@ -1,7 +1,7 @@
 import { getAllMoviePosters } from "../../helpers/posterHelper";
 import MovieList from "../../components/movies/MovieList";
 
-function movies(props) {
+function Movies(props) {
     return <MovieList posters={props.posters} />
 }
 
@@ -19,4 +19,4 @@ export async function getStaticProps() {
 }
 
 
-export default movies;
+export default Movies;
