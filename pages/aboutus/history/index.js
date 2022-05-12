@@ -1,21 +1,21 @@
 import AboutUsNavigation from "../../../components/layout/AboutUsNavigation"
-
 import classes from "../../../styles/AboutUs.module.css";
 
-function aboutus() {
+function history() {
     return <div>
         <AboutUsNavigation />
         <div className={classes.aboutUsSpace}>
             <div className={classes.aboutUsItem}>
                 <h1>Historia</h1>
-                <p>"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta
-                    sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-                    consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui
-                    dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora
-                    incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis
-                    nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
-                    Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur,
-                    vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"</p>
+                <h3>Ytterhogdals bio tillhör Folkets bio. Folkets Bio startades 1973 för att filmer som inte den kommersiella
+                    branschen ville visa skulle få möjlighet att möta en publik. Så byggdes en aktivistdriven kedja av biografer med egen import och distribution.</h3>
+                <h3>Biografen hittar du på Folkets hus. Här finns Härjedalens största filmduk och plats för många biosugna gäster. I oktober 2012 digitaliserades biografen,
+                    och sedan dess visas premiärer tidigare än förr. Man hoppas även i framtiden kunna direktsända konserter och andra evenemang.</h3>
+                <h3>Varmt Välkommen</h3>
+            </div>
+            <br></br>
+            <div className="bioImg">
+                <img src='/yhbio.jpg' />
             </div>
 
         </div>
@@ -26,4 +26,4 @@ function aboutus() {
 
 }
 
-export default aboutus; 
+export default history; 
