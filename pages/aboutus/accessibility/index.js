@@ -1,5 +1,5 @@
 import AboutUsNavigation from "../../../components/layout/AboutUsNavigation"
-import classes from "../../../styles/AboutUs.module.css";
+import classes from "../../../styles/aboutUs.module.css";
 
 function a11y() {
     return <div>

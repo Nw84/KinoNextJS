@@ -1,5 +1,5 @@
 import AboutUsNavigation from "../../../components/layout/AboutUsNavigation"
-import classes from "../../../styles/AboutUs.module.css";
+import classes from "../../../styles/aboutUs.module.css";
 
 function history() {
     return <div>
@@ -14,7 +14,7 @@ function history() {
                 <h3>Varmt Välkommen</h3>
             </div>
             <br></br>
-            <div className="bioImg">
+            <div className={classes.bioImg}>
                 <img src='/yhbio.jpg' />
             </div>
 
