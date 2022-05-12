@@ -1,3 +1,5 @@
+import classes from "./LoginForm.module.css";
+
 function LoginForm({ handleSubmit, setPassword, setUsername }) {
   function submitLogin(event) {
     event.preventDefault();
@@ -6,7 +8,7 @@ function LoginForm({ handleSubmit, setPassword, setUsername }) {
   }
 
   return (
-    <div>
+    <div className={classes.loginContent}>
       <h1>Logga in</h1>
       <form onSubmit={submitLogin}>
         <input

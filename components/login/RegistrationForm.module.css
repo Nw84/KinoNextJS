@@ -1,0 +1,9 @@
+.RegistrationContent {
+    display: flex;
+    flex-direction: column;
+}
+
+.regButton {
+    line-break: strict;
+}
+

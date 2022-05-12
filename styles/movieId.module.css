@@ -1,0 +1,18 @@
+.reviewContainer {
+    min-height: 60vh;
+}
+
+.btnContainer {
+    text-align: center;
+    align-items: center;
+}
+
+.btn {
+    padding: 10px;
+    width: 7rem;
+    font-weight: 600;
+}
+
+.reviewFormContainer {
+    padding: 5rem;
+}

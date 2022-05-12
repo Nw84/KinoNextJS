@@ -6,7 +6,7 @@ function ScreeningItem(props) {
         <li className={classes.item}>
             <div className={classes.card}>
                 <div className={classes.image}>
-                    <img src={props.image} alt={props.title} />
+                    <img src={props.poster} alt={props.title} />
                     <span className={classes.tag}>{props.time}</span>
                 </div>
                 <div className={classes.content}>

@@ -19,7 +19,6 @@ function faq() {
                     Syftet med denna personuppgiftspolicy är att på ett så tydligt och transparent sätt som möjligt beskriva hur vi samlar in och använder personuppgifter och vad du som kund
                     har rätt att begära av oss när det gäller den hanteringen.</h3>
             </div>
-
         </div>
     </div>
 

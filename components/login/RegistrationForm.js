@@ -1,3 +1,5 @@
+import classes from "./RegistrationForm.module.css";
+
 function RegistrationForm({ handleRegistration, setUser, setPwd }) {
   function submitRegistration() {
 
@@ -5,7 +7,7 @@ function RegistrationForm({ handleRegistration, setUser, setPwd }) {
   }
 
   return (
-    <div>
+    <div className={classes.RegistrationContent} >
       <h1>Registrera Användare</h1>
       <form onSubmit={submitRegistration}>
         <input
@@ -17,12 +19,12 @@ function RegistrationForm({ handleRegistration, setUser, setPwd }) {
         <input
           autoComplete="Mitt säkra lösenord"
           placeholder="Lösenord"
-          type="password"          
+          type="password"
           onChange={(ev) => setPwd(ev.target.value)}
         />
-        <input type="submit" />
+        <input className={classes.regButton} type="submit" />
       </form>
-    </div>
+    </div >
   );
 }
 

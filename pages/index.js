@@ -1,8 +1,7 @@
-import { MongoClient } from "mongodb";
-
+import { getAllMoviePosters } from "../helpers/posterHelper";
 import PosterList from "../components/movies/PosterList";
 import MainHero from "../components/layout/MainHero";
-import classes from "../styles/Home.module.css";
+import classes from "../styles/home.module.css";
 
 function HomePage(props) {
   return (
@@ -21,22 +20,13 @@ function HomePage(props) {
 }
 
 export async function getStaticProps() {
-
-  const client = await MongoClient.connect("mongodb+srv://Bosse:LKjRPJ2chOlxeM0E@cluster0.rpxxl.mongodb.net/moviePosters?retryWrites=true&w=majority");
-
-  const db = client.db();
-
-  const postersCollection = db.collection("moviePosters");
-
-  const posters = await postersCollection.find().toArray();
-
-  client.close();
+  const posters = await getAllMoviePosters();
 
   return {
     props: {
       posters: posters.map((poster) => ({
         title: poster.title,
-        image: poster.image,
+        poster: poster.poster,
         id: poster._id.toString()
       })),
     },

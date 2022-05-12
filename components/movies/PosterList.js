@@ -8,7 +8,7 @@ function PosterList(props) {
                 <PosterItem
                     key={poster.id}
                     title={poster.title}
-                    image={poster.image} />
+                    poster={poster.poster} />
             ))}
         </ul>
     )

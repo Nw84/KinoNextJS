@@ -1,26 +1,107 @@
-import { MongoClient, ObjectId } from "mongodb";
 import MovieDetails from "../../../components/movies/MovieDetails";
+import ReviewList from "../../../components/reviews/reviewList";
+import { getReviews } from "../../../helpers/reviewHelper";
+import ReviewForm from "../../../components/reviews/ReviewForm";
+import { useState } from "react";
+import { useRouter } from "next/router";
+import classes from "../../../styles/movieId.module.css";
+import { pathHelper, getOnePoster } from "../../../helpers/posterHelper";
+
+import React, { useContext } from "react";
+import { Context } from "../../_app";
+
 
 function movieDetails(props) {
+    const [rating, setRating] = useState(1);
+    const [review, setReview] = useState("");
+    const [name, setName] = useState("");
+    const [low, setLow] = useState(0);
+    const [high, setHigh] = useState(5);
+    const [context, setContext] = useContext(Context);
+
+    function nextHandler() {
+        setLow(low + 5)
+        setHigh(high + 5)
+    }
+
+    function previousHandler() {
+        setLow(low - 5)
+        setHigh(high - 5)
+    }
+
+    const router = useRouter();
+
+    async function handleReview() {
+        await fetch("/api/review", {
+            method: "POST",
+            body: JSON.stringify({
+                name,
+                rating,
+                comment: review,
+                movieId: props.movieId,
+                date: new Date()
+            }),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+        setName("");
+        setReview("");
+        setRating(1);
+        setLow(0)
+        setHigh(5)
+        router.push("/movies/" + props.movieId);
+    }
+
     return (
-        <MovieDetails
-            image={props.movieData.image}
-            title={props.movieData.title}
-            description={props.movieData.description} />
+        <>
+            <MovieDetails
+                image={props.movieData.image}
+                title={props.movieData.title}
+                description={props.movieData.description} />
+
+            <div className={classes.reviewContainer}>
+                <ReviewList
+                    reviews={props.reviews.slice(low, high)} />
+                <div className={classes.btnContainer}>
+                    <h4> Recensioner
+                        {props.reviews.length < high ? " " + low + "-" + props.reviews.length :
+                            " " + low + "-" + high
+                        }
+                    </h4>
+
+                    <button
+                        className={classes.btn}
+                        disabled={low === 0}
+                        onClick={previousHandler}>
+                        Föregående
+                    </button>
+                    <button
+                        className={classes.btn}
+                        disabled={high + 1 > props.reviews.length}
+                        onClick={nextHandler}>
+                        Nästa
+                    </button>
+                </div>
+                <div className={classes.reviewFormContainer}>
+                    {context === true ?
+                        <ReviewForm
+                            handleReview={handleReview}
+                            setRating={setRating}
+                            rating={rating}
+                            setName={setName}
+                            name={name}
+                            setReview={setReview}
+                            review={review} />
+                        : <h4>You have to be logged in to write a comment</h4>}
+                </div>
+            </div>
+        </>
     )
 }
 
 export async function getStaticPaths() {
-    const client = await MongoClient.connect("mongodb+srv://Bosse:LKjRPJ2chOlxeM0E@cluster0.rpxxl.mongodb.net/moviePosters?retryWrites=true&w=majority");
-
-    const db = client.db();
-
-    const postersCollection = db.collection("moviePosters");
-
-    const posters = await postersCollection.find({}, { _id: 1 }).toArray();
-
-    client.close();
-
+    const posters = await pathHelper();
 
     return {
         fallback: false,
@@ -30,33 +111,29 @@ export async function getStaticPaths() {
     };
 }
 
+//Fetch data for a single movie
 export async function getStaticProps(context) {
-    //Fetch data for a single movie
-
     const movieID = context.params.movieID;
-
-    const client = await MongoClient.connect("mongodb+srv://Bosse:LKjRPJ2chOlxeM0E@cluster0.rpxxl.mongodb.net/moviePosters?retryWrites=true&w=majority");
-
-    const db = client.db();
-
-    const postersCollection = db.collection("moviePosters");
-
-    const selectedMovie = await postersCollection.findOne({ _id: ObjectId(movieID) })
-
-    client.close();
+    const selectedMovie = await getOnePoster(movieID)
+    const reviews = await getReviews(movieID);
 
     return {
         props: {
             movieData: {
                 id: selectedMovie._id.toString(),
                 title: selectedMovie.title,
-                image: selectedMovie.image,
+                image: selectedMovie.poster,
                 description: selectedMovie.description,
             },
+            reviews: reviews.map((review) => ({
+                id: review._id.toString(),
+                name: review.name,
+                rating: review.rating,
+                comment: review.comment,
+            })),
+            movieId: movieID,
         }
     }
 }
-
-
 
 export default movieDetails; 

@@ -1,9 +1,8 @@
 import { useRouter } from "next/router";
-import { Fragment } from "react";
-import Link from "next/link";
-import { getSpecifikScreenings, getMovieList } from "../../helpers/getScreenings";
+import { getSpecifikScreenings, getMovieList } from "../../helpers/screeningHelper";
 import ScreeningsList from "../../components/screenings/ScreeningsList";
 import ScreeningSearch from "../../components/screenings/Screening-search";
+import classes from "../../styles/tickets.module.css";
 
 function FilteredTicketsPage(props) {
     const router = useRouter();
@@ -13,18 +12,18 @@ function FilteredTicketsPage(props) {
     }
 
     if (props.screenings.length > 0) {
-        return <Fragment>
+        return <div className={classes.tickets}>
             <h1>Biljetter</h1>
             <ScreeningSearch onSearch={onSearchHandler} list={props.list} filter={props.name} />
             <ScreeningsList screenings={props.screenings} />
-        </Fragment>
+        </div>
     } else {
-        return <Fragment>
+        return <div className={classes.tickets}>
             <h1>Biljetter</h1>
             <ScreeningSearch onSearch={onSearchHandler} list={props.list} />
             <h6>Active Filter: {props.name} </h6>
             <h2>Något gick fel och det finns inga visningar för den valda filmen</h2>
-        </Fragment>
+        </div>
     }
 }
 
@@ -36,11 +35,11 @@ export async function getServerSideProps(context) {
     return {
         props: {
             screenings: screenings.map((screening) => ({
-                title: screening.movie,
+                title: screening.title,
                 id: screening._id.toString(),
                 date: screening.date,
-                image: screening.image,
-                seats: screening.Seats,
+                poster: screening.poster,
+                seats: screening.seats,
                 time: screening.time
             })),
             list: list,
