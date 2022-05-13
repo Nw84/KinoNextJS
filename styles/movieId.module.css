@@ -1,7 +1,3 @@
-.reviewContainer {
-    min-height: 60vh;
-}
-
 .btnContainer {
     text-align: center;
     align-items: center;
@@ -14,7 +10,7 @@
 }
 
 .reviewFormContainer {
-    padding: 3rem;
+    margin: 3rem;
 }
 
 .loginReview {
@@ -24,9 +20,20 @@
 
 .loginReview a {
     font-size: 1.2rem;
-    color: rgba(255, 255, 255, 0.8);
+    font-weight: bold;
+    color: #fff;
 }
 
 .loginReview a:hover {
-    color: #fff;
+    font-size: 1.3rem;
+}
+
+.noReviews {
+    text-align: center;
+    margin: 3rem;
+}
+
+.noReviewTitle {
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: normal;
 }

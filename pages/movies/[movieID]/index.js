@@ -60,29 +60,38 @@ function movieDetails(props) {
                 title={props.movieData.title}
                 description={props.movieData.description} />
 
-            <div className={classes.reviewContainer}>
-                <ReviewList
-                    reviews={props.reviews.slice(low, high)} />
-                <div className={classes.btnContainer}>
-                    <h4> Recensioner
-                        {props.reviews.length < high ? " " + low + "-" + props.reviews.length :
-                            " " + low + "-" + high
-                        }
-                    </h4>
 
-                    <button
-                        className={classes.btn}
-                        disabled={low === 0}
-                        onClick={previousHandler}>
-                        Föregående
-                    </button>
-                    <button
-                        className={classes.btn}
-                        disabled={high + 1 > props.reviews.length}
-                        onClick={nextHandler}>
-                        Nästa
-                    </button>
-                </div>
+            <div className={classes.reviewContainer}>
+                {props.reviews.length > 0 ?
+                    <div>
+                        <ReviewList
+                            reviews={props.reviews.slice(low, high)} />
+                        <div className={classes.btnContainer}>
+                            <h4> Recensioner
+                                {props.reviews.length < high ? " " + low + "-" + props.reviews.length :
+                                    " " + low + "-" + high
+                                }
+                            </h4>
+
+                            <button
+                                className={classes.btn}
+                                disabled={low === 0}
+                                onClick={previousHandler}>
+                                Föregående
+                            </button>
+                            <button
+                                className={classes.btn}
+                                disabled={high + 1 > props.reviews.length}
+                                onClick={nextHandler}>
+                                Nästa
+                            </button>
+                        </div>
+                    </div>
+                    :
+                    <div className={classes.noReviews}>
+                        <h3 className={classes.noReviewTitle}> Det finns inga recensioner för denna film ännu </h3>
+                    </div>
+                }
                 <div className={classes.reviewFormContainer}>
                     {context === true ?
                         <ReviewForm
