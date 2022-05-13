@@ -14,5 +14,19 @@
 }
 
 .reviewFormContainer {
-    padding: 5rem;
+    padding: 3rem;
+}
+
+.loginReview {
+    display: flex;
+    justify-content: center;
+}
+
+.loginReview a {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.loginReview a:hover {
+    color: #fff;
 }

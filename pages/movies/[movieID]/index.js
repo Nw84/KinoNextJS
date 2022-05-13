@@ -6,7 +6,7 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import classes from "../../../styles/movieId.module.css";
 import { pathHelper, getOnePoster } from "../../../helpers/posterHelper";
-
+import Link from "next/link";
 import React, { useContext } from "react";
 import { Context } from "../../_app";
 
@@ -93,7 +93,13 @@ function movieDetails(props) {
                             name={name}
                             setReview={setReview}
                             review={review} />
-                        : <h4>You have to be logged in to write a comment</h4>}
+                        :
+                        <div className={classes.loginReview}>
+                            <Link href="/login">
+                                <a> Logga in för att lämna en recension </a>
+                            </Link>
+                        </div>
+                    }
                 </div>
             </div>
         </>
