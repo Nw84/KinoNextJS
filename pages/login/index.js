@@ -70,8 +70,13 @@ function Login(props) {
             headers: {
                 "Content-Type": "application/json"
             }
+        }).then((res) => res.json())
+        .then((data) => {
+            console.log(data)
         });
     }
+
+    
     if (loggedIn) {
         return (
             <div className={classes.loginContainer}>
