@@ -1,5 +1,12 @@
 .loginContainer {
-    width: 40vw;
+    padding: 2rem 0 2rem 2rem;
+    background-color: darkgray;
+    width: 40rem;
     margin: 4rem auto;
+}
+
+.ifNot {
+    margin: auto;
+    width: 25rem;
 }
 

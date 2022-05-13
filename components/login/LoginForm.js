@@ -12,20 +12,35 @@ function LoginForm({ handleSubmit, setPassword, setUsername }) {
       <h1>Logga in</h1>
       <form onSubmit={submitLogin}>
         <input
+          className={classes.loginName}
+          required="required"
           autoComplete="Ange ditt användarnamn"
           placeholder="Användarnamn"
           type="text"
           onChange={(ev) => setUsername(ev.target.value)}
         />
         <input
+          className={classes.loginPWD}
+          required="required"
           autoComplete="Ange ditt lösenord"
           placeholder="Lösenord"
           type="password"
           onChange={(ev) => setPassword(ev.target.value)}
         />
-        <input type="radio" value="cookies" />
-        Allow cookies
-        <input type="submit" />
+        <div>
+          <input 
+            className={classes.loginCoockie}
+            required="required"
+            type="checkbox"  
+            value="cookies"
+          />
+          Allow cookies
+        </div>
+        <input 
+          className={classes.loginBtn}
+          type="submit"
+          value={"Logga in"}
+        />
       </form>
     </div>
   );

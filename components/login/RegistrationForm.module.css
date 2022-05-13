@@ -1,9 +1,39 @@
-.RegistrationContent {
+.registrationContent {
+    margin: auto;
+    width: fit-content;
+}
+
+.registrationContent form {
     display: flex;
     flex-direction: column;
 }
 
-.regButton {
-    line-break: strict;
+.regName {
+    width: 25rem;
+    height: 2rem;
 }
 
+.regPWD {
+    width: 25rem;
+    height: 2rem;
+    margin: 1rem 0 1rem 0;
+}
+
+.regBtn {
+    margin: 1rem 0 3rem 0;
+    color: whitesmoke;
+    font: inherit;
+    text-align: center;
+    cursor: pointer;
+    background-color: darkred; 
+    border: 1px solid darkred; 
+    border-radius: 6px;
+    padding: 0.5rem 1.5rem;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
+    width: 10rem;
+}
+
+.regBtn:hover {
+    color: whitesmoke;
+    border: 1px solid whitesmoke;
+  }

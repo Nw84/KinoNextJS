@@ -53,7 +53,10 @@ function Login(props) {
             headers: {
                 "Content-Type": "application/json"
             }
-        });
+        }).then((res) => res.json())
+            .then((data) => {
+                console.log(data)
+            });
         router.push("/login");
     }
 
@@ -80,7 +83,7 @@ function Login(props) {
         return (
             <div className={classes.loginContainer}>
                 <LoginForm handleSubmit={handleSubmit} setPassword={setPassword} setUsername={setUsername} />
-                <div>
+                <div className={classes.ifNot}>
                     <p>Har du inget konto ? Klicka här för att registrera dig</p>
                     <Button onClick={() => setPageState("registration")}>Registrera Konto</Button>
                 </div>
@@ -90,7 +93,7 @@ function Login(props) {
         return (
             <div className={classes.loginContainer}>
                 <RegistrationForm handleRegistration={handleRegistration} setUser={setUser} setPwd={setPwd} />
-                <div>
+                <div className={classes.ifNot}>
                     <p>Har du redan ett konto, så logga in här</p>
                     <Button onClick={() => setPageState("login")}>Logga in</Button>
                 </div>
