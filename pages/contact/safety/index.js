@@ -8,6 +8,9 @@ function safety() {
         <div className={classes.aboutUsSpace}>
             <div className={classes.aboutUsItem}>
                 <h1>test3</h1>
+                <div className={classes.coronaImg}>
+                <img src='/corona.jpg' />
+            </div>
             </div>
         </div>
     </div>
