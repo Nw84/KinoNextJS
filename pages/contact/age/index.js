@@ -20,6 +20,9 @@ function age() {
                 <p>11-årsgräns innebär att man, för att se på filmen utan vuxet sällskap, måste ha fyllt 11 år. I vuxens sällskap är det tillåtet att se filmen från 7 års ålder.</p>
 
                 <p>Som biografägare och som arena för publika visningar av film är vi skyldiga att kontrollera att lag om åldersgränserna följs</p>
+
+                <h1>Barnvagnsbio</h1>
+                <p>Vissa dagar i veckan har vi speciellt utvalda barnfilmer för de minsta. Parkera barnvagnen smidigt vid utmarkerade platser nära stolarna. Micro finns för att värma flaskan</p>
             </div>
         </div>
     </div>
