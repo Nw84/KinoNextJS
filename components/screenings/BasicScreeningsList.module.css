@@ -1,0 +1,14 @@
+.container {
+    text-align: center;
+}
+
+.list {
+    padding: 0;
+    display: inline-block;
+    text-align: left;
+  }
+.list li {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+}
