@@ -15,12 +15,17 @@ function contact() {
 
                 <h2>Mail:</h2>      
                 <p>Du kan maila oss när du vill men oftast svarar vi dagtid alla dagar.</p>
-                
+
                 <h2>Öppetider</h2>
                 <p>Våra ordinarie öppetider är:</p>
                 <p>mån-tor: 11.30-23.00 </p>
                 <p>fre-lör: 11.30 - 01.00</p>
                 <p>sön: 14.00 - 23.00 </p>
+
+                <h2>På plats</h2>
+                <p>Ordinarie öppetider är vi alltid på plats och kan hjälpa dig</p>
+                <p>Hogdalsvägen 3</p>
+                <p>84090 Ytterhogdal</p>
 
             </div>
         </div>
