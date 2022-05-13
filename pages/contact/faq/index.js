@@ -9,10 +9,12 @@ function question() {
             <div className={classes.aboutUsItem}>
                 <h1>Frågor och svar</h1>
                 <h1>Giltighetstid på presentkort och biljetter</h1>
-                <p>Presentkort är giltiga i ett år från inköpsdatum. Biljetter är giltiga endast den dag och tid du har bokat</p>
-                <h2>Återköp</h2>
-                <p>Vi har tyvärr ingen möjlighet att återköpa biljetter eller presentkort.</p>
-                <h2>GDPR</h2>
+                <p>Ge bort en bioupplevelse till någon du bryr dig om! Ett presentkort på bio passar för alla tillfällen och är alltid lika uppskattat!
+                Du laddar kortet med pengar som sedan kan användas till biobiljetter, popcorn, godis och mycket mer. Presentkortet är giltigt i två år.</p>
+                <h1>Återköp</h1>
+                <p>Byte av biljetter är inte möjligt, återköp måste göras även om ni bara vill göra en ändring på köpta biljetter.
+                Återköp av köpta biljetter medges inte efter föreställningsstart.</p>
+                <h1>GDPR</h1>
                 <p>För oss är våra kunders förtroende av allra största vikt. Vi vet att det förtroendet bland annat bygger på hur vi hanterar
                     den information vi samlar in om dig som kund och vår förmåga att skydda din integritet. Vi utför all insamling och behandling av personuppgifter i enlighet med gällande
                     integritetsskyddslagstiftning. Vi strävar alltid efter att minimera de uppgifter vi behandlar och vi säljer aldrig dina personuppgifter till andra företag.
