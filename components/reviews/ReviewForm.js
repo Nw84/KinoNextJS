@@ -9,36 +9,47 @@ function ReviewForm({ handleReview, setRating, setReview, setName, name, review,
 
   return (
     <div className={classes.container}>
-      <h1>Skriv din recension för filmen </h1>
+      <h1> Lämna en recension för filmen </h1>
+
       <form onSubmit={submitReview}>
-        <input
-          autoComplete="Fyll i ditt namn"
-          placeholder="Namn"
-          type="text"
-          value={name}
-          onChange={(ev) => setName(ev.target.value)}
-        />
+        <div className={classes.partial}>
+          <input
+            className={classes.name}
+            autoComplete="Fyll i ditt namn"
+            placeholder="Namn"
+            required
+            type="text"
+            value={name}
+            onChange={(ev) => setName(ev.target.value)}
+          />
 
-        <input
-          autoComplete="Skriv din recension"
-          placeholder="Recension"
-          type="text"
-          value={review}
-          onChange={(ev) => setReview(ev.target.value)}
-        />
+            <select
+              className={classes.rating}
+              value={rating}
+              required
+              onChange={(ev) => setRating(parseInt(ev.target.value))} >
+              <option value="1"> 1/5 </option>
+              <option value="2"> 2/5 </option>
+              <option value="3"> 3/5 </option>
+              <option value="4"> 4/5 </option>
+              <option value="5"> 5/5 </option>
+            </select>
+        </div>
 
-        <select
-          className="review"
-          value={rating}
-          onChange={(ev) => setRating(parseInt(ev.target.value))} >
-          <option value="1"> 1 </option>
-          <option value="2"> 2 </option>
-          <option value="3"> 3 </option>
-          <option value="4"> 4 </option>
-          <option value="5"> 5 </option>
-        </select>
+        <div className={classes.partial2}>
+          <textarea
+            className={classes.comment}
+            autoComplete="Skriv din recension"
+            placeholder="Recension"
+            type="text"
+            required
+            maxLength={330}
+            value={review}
+            onChange={(ev) => setReview(ev.target.value)}
+          />
 
-        <input type="submit" />
+          <input className={classes.btn} type="submit" />
+        </div>
       </form>
     </div>
   );
