@@ -7,6 +7,7 @@ function MainHero() {
         <div className={classes.hero}>
             <div className={classes.upcoming}>
                 <Image
+                    className={classes.image}
                     src={profilePic}
                     alt="logo"
                 />

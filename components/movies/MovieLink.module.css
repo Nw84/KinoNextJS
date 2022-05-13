@@ -1,3 +1,11 @@
-.item {
-    margin: 1rem;
+.image img {
+  padding: 2rem;
+  width: 100%;
+  height: 25vw;
+  object-fit: contain;
+}
+
+.image img:hover {
+    cursor: pointer;
+    opacity: 20%;
   }

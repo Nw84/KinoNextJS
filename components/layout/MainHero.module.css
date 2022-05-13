@@ -21,6 +21,15 @@
 }
 
 .image {
-    width: 400px;
-    height: 600px;
-}
+    animation: fade-in 1s forwards 1;
+  }
+  
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+  
+    100% {
+      opacity: 1;
+    }
+  }
