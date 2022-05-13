@@ -1,8 +1,19 @@
 import { getAllMoviePosters } from "../../helpers/posterHelper";
+import classes from "../../styles/movies.module.css";
 import MovieList from "../../components/movies/MovieList";
 
 function movies(props) {
-    return <MovieList posters={props.posters} />
+
+    return (
+        <div className={classes.movies}>
+            <div className={classes.movieCategories}>
+                <h1>Aktuella filmer</h1>
+                <div className={classes.movieList}>
+                    <MovieList posters={props.posters} />
+                </div>
+            </div>
+        </div>
+    )
 }
 
 export async function getStaticProps() {
@@ -11,12 +22,12 @@ export async function getStaticProps() {
         props: {
             posters: posters.map((poster) => ({
                 title: poster.title,
-                id: poster._id.toString()
+                poster: poster.poster,
+                id: poster._id.toString(),
             })),
         },
-        revalidate: 1
+        revalidate: 1,
     };
 }
-
 
 export default movies;

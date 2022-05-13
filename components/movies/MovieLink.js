@@ -1,5 +1,4 @@
 import { useRouter } from "next/router"
-
 import classes from "./MovieLink.module.css";
 
 function MovieLink(props) {
@@ -11,7 +10,9 @@ function MovieLink(props) {
 
     return (
         <li className={classes.item}>
-            <a onClick={showDetailsHandler}>{props.title}</a>
+            <a className={classes.image} onClick={showDetailsHandler}>
+                <img src={props.poster} alt={props.title} />
+            </a>
         </li>
     )
 }
