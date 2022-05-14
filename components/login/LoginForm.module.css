@@ -1,5 +1,41 @@
+.loginContent {
+    color: darkred;
+    text-shadow: 0.05rem 0.05rem rgb(238, 229, 229);
+    margin: auto;
+    width: fit-content;
+}
+
 .loginContent form {
     display: flex;
     flex-direction: column;
 }
 
+.loginName {
+    width: 20rem;
+    height: 2rem;
+}
+
+.loginPWD {
+    width: 20rem;
+    height: 2rem;
+    margin: 1rem 3rem 1rem 0;
+}
+
+.loginBtn {
+    margin: 1rem 0 3rem 0;
+    color: whitesmoke;
+    font: inherit;
+    text-align: center;
+    cursor: pointer;
+    background-color: darkred; 
+    border: 1px solid darkred; 
+    border-radius: 6px;
+    padding: 0.5rem 1.5rem;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
+    width: 10rem;
+}
+
+.loginBtn:hover {
+    color: whitesmoke;
+    border: 1px solid whitesmoke;
+  }

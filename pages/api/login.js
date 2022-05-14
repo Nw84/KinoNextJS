@@ -25,13 +25,12 @@ export default async function loginHandler(req, res) {
                     Iron.defaults
                 )
                 );
-                res.status(200).end();
+                return res.status(200).json("Välkommen!");
             } else {
-                res.json("Felaktigt lösenord")
+                return res.status(403).json("Felaktigt lösenord")
             }
         } else {
-            res.json("Det finns ingen användare med det namnet")
-            res.status(405).end();
+            return res.status(401).json("Det finns ingen användare med det namnet")
         }
     } else {
         res.status(405).end();
