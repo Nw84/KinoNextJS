@@ -2,7 +2,6 @@ import classes from './MainHero.module.css';
 import profilePic from '../../public/upcoming.png';
 
 function MainHero(props) {
-    console.log(props.posters)
     return (
         <div className={classes.hero}>
             <h1 className={classes.heroText}>Kommande premiär</h1>
