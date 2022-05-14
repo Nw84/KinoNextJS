@@ -1,4 +1,6 @@
 .loginContent {
+    color: darkred;
+    text-shadow: 0.05rem 0.05rem rgb(238, 229, 229);
     margin: auto;
     width: fit-content;
 }
@@ -9,14 +11,14 @@
 }
 
 .loginName {
-    width: 25rem;
+    width: 20rem;
     height: 2rem;
 }
 
 .loginPWD {
-    width: 25rem;
+    width: 20rem;
     height: 2rem;
-    margin: 1rem 0 1rem 0;
+    margin: 1rem 3rem 1rem 0;
 }
 
 .loginBtn {
@@ -37,4 +39,3 @@
     color: whitesmoke;
     border: 1px solid whitesmoke;
   }
-

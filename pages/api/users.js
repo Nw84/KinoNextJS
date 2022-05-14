@@ -13,7 +13,6 @@ export default async function userHandler(req, res) {
                     password: hash
                 } 
                 const test = await getUser(req.body.username)
-                console.log(test)
                 let result;
                 if (test.length < 1) {
                     result = await regUser(data); 

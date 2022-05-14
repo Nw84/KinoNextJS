@@ -1,12 +1,48 @@
 .loginContainer {
-    padding: 2rem 0 2rem 2rem;
-    background-color: darkgray;
-    width: 40rem;
-    margin: 4rem auto;
+    margin: 5rem auto;
+    width: fit-content;
+    padding: 2rem 5rem 3rem 8rem;
+    background-color: #d9d6d4;
+    animation: fade-in 2s;
 }
 
-.ifNot {
-    margin: auto;
-    width: 25rem;
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
+.error {
+    color: darkred;
+    animation: error 7s;
+}
+
+@keyframes error {
+    0% {
+      opacity: 0;
+    }
+  
+    20% {
+      opacity: 1;
+    }
+  
+    40% {
+      opacity: 0;
+    }
+  
+    60% {
+      opacity: 1;
+    }
+  
+    80% {
+      opacity: 0;
+    }
+  
+    100% {
+      opacity: 1;
+    }
+}

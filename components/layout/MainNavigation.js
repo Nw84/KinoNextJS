@@ -20,12 +20,12 @@ function MainNavigation() {
                 <ul>
                     <li>
                         <Link href='/movies'>
-                            <a className={router.pathname == '/movies' ? `${classes.active} ${classes.mainMenuText}` : `${classes.mainMenuText}`}>Filmer</a>
+                            <a className={router.pathname.startsWith('/movies') ? `${classes.active} ${classes.mainMenuText}` : `${classes.mainMenuText}`}>Filmer</a>
                         </Link>
                     </li>
                     <li>
                         <Link href='/tickets'>
-                            <a className={router.pathname == '/tickets' ? `${classes.active} ${classes.mainMenuText}` : `${classes.mainMenuText}`}>Biljetter</a>
+                            <a className={router.pathname.startsWith('/tickets') ? `${classes.active} ${classes.mainMenuText}` : `${classes.mainMenuText}`}>Biljetter</a>
                         </Link>
                     </li>
                     <li>

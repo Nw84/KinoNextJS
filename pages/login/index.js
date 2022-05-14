@@ -19,8 +19,11 @@ function Login(props) {
     const [pwd, setPwd] = useState("");
     const [pageState, setPageState] = useState("login");
     const [loggedIn, setLoggedIn] = useContext(Context);
+    
+
 
     const router = useRouter();
+    const [error, setError] = useState("");
 
     useEffect(() => {
         if (props.loggedIn === true) {
@@ -40,6 +43,7 @@ function Login(props) {
                 "Content-Type": "application/json"
             }
         });
+        setError("")
         router.push("/login");
     }
 
@@ -55,7 +59,7 @@ function Login(props) {
             }
         }).then((res) => res.json())
             .then((data) => {
-                console.log(data)
+                setError(data);
             });
         router.push("/login");
     }
@@ -72,11 +76,10 @@ function Login(props) {
             }
         }).then((res) => res.json())
         .then((data) => {
-            console.log(data)
+            setError(data);
         });
     }
 
-    
     if (loggedIn) {
         return (
             <div className={classes.loginContainer}>
@@ -87,21 +90,19 @@ function Login(props) {
     } if (pageState == "login") {
         return (
             <div className={classes.loginContainer}>
-                <LoginForm handleSubmit={handleSubmit} setPassword={setPassword} setUsername={setUsername} />
-                <div className={classes.ifNot}>
-                    <p>Har du inget konto ? Klicka här för att registrera dig</p>
-                    <Button onClick={() => setPageState("registration")}>Registrera Konto</Button>
-                </div>
+                    <LoginForm handleSubmit={handleSubmit} setPassword={setPassword} setUsername={setUsername} />
+                    <span className={classes.error}>{error}</span>
+                    <p>Registrera dig här om du inte har ett konto:</p>
+                    <Button onClick={() => (setPageState("registration"), setError(""))}>Registrera Konto</Button>
             </div>
         )
     } else if (pageState == "registration") {
         return (
             <div className={classes.loginContainer}>
                 <RegistrationForm handleRegistration={handleRegistration} setUser={setUser} setPwd={setPwd} />
-                <div className={classes.ifNot}>
-                    <p>Har du redan ett konto, så logga in här</p>
-                    <Button onClick={() => setPageState("login")}>Logga in</Button>
-                </div>
+                <span className={classes.error}>{error}</span>
+                <p>Har du redan ett konto, så logga in här:</p>
+                <Button onClick={() => (setPageState("login"), setError(""))}>Logga in</Button>
             </div>
 
         )
