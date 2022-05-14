@@ -8,7 +8,7 @@ function safety() {
         <div className={classes.aboutUsSpace}>
             <div className={classes.aboutUsItem}>
                 <div className={classes.cImg}>
-                    <img src='/corona.jpg' />
+                    <img src='/corona.jpg' alt="picture showing safety tips regarding Corona" />
                 </div>
                 <h1>Säkerhet</h1>
                 <p>Coronaviruset finns fortfarande kvar och vi har fortfarande våra säkerhetsrutiner aktiva</p>

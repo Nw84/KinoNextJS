@@ -4,7 +4,7 @@ import { getAllScreenings, getMovieList } from "../../helpers/screeningHelper";
 import ScreeningSearch from "../../components/screenings/Screening-search";
 import classes from "../../styles/tickets.module.css"
 
-function tickets(props) {
+function Tickets(props) {
     const router = useRouter();
     function onSearchHandler(name) {
         const fullPath = `/tickets/${name}`;
@@ -40,4 +40,4 @@ export async function getStaticProps() {
     };
 }
 
-export default tickets; 
+export default Tickets; 
