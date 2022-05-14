@@ -1,18 +1,25 @@
 import classes from './MainHero.module.css';
-import Image from 'next/image';
 import profilePic from '../../public/upcoming.png';
 
-function MainHero() {
+function MainHero(props) {
+    console.log(props.posters)
     return (
         <div className={classes.hero}>
-            <div className={classes.upcoming}>
-                <Image
-                    className={classes.image}
-                    src={profilePic}
-                    alt="logo"
-                />
-            </div>
             <h1 className={classes.heroText}>Kommande premiär</h1>
+            <div className={classes.upcoming}>
+                {props.posters ?
+                    <img
+                        className={classes.image}
+                        src={props.posters.poster}
+                        alt="logo"
+                    /> :
+                    <img
+                        className={classes.image}
+                        src={profilePic}
+                        alt="logo"
+                    />
+                }
+            </div>
         </div>
     );
 };

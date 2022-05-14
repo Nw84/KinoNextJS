@@ -18,9 +18,11 @@
     text-align: center;
     margin: 0 auto;
     font-size:2vw;
+    padding-bottom: 2.5rem;
 }
 
 .image {
+    max-height: 45vh;
     animation: fade-in 1s forwards 1;
   }
   
@@ -33,3 +35,19 @@
       opacity: 1;
     }
   }
+
+@media only screen and (max-width: 1640px) {
+    .image  {
+      max-height: 35vh
+    }
+    .heroText {   
+      font-size:1.8vw;
+      padding-bottom: 1rem;
+  }
+}
+
+@media only screen and (max-width: 1280px) {
+  .image  {
+    max-height: 20vh
+  }
+}

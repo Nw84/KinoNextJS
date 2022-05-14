@@ -9,7 +9,7 @@ function HomePage(props) {
   return (
     <div className={classes.container}>
       <div className={classes.mainHero}>
-        <MainHero />
+        <MainHero posters={props.posters[0]} />
       </div>
       <div className={classes.cards}>
         <div className={classes.cardCategories}>
