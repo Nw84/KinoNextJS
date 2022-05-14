@@ -1,7 +1,7 @@
 .review {
     display: flex;
     flex-direction: row;
-    height: 6rem;
+    min-height: 6rem;
     border-bottom: 4px solid #000;
 }
 
@@ -13,11 +13,10 @@
     background-color: #f0eeed;
     border-right: 2px solid #d9d6d4;
     border-radius: 8px;
-    width: 17rem;
+    min-width: 17rem;
 }
 
 .name {
-    margin: auto;
     font-size: 1.3rem;
     font-weight: bold;
 }

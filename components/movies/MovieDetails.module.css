@@ -1,6 +1,7 @@
 .detail {
     display: flex;
     flex-direction: row;
+    justify-content: center;
     text-align: left;
     margin: 3rem auto;
     width: 60vw;
