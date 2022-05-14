@@ -119,7 +119,7 @@ export async function getStaticPaths() {
     const posters = await pathHelper();
 
     return {
-        fallback: false,
+        fallback: "blocking",
         paths: posters.map(poster => ({
             params: { movieID: poster._id.toString() }
         })),
@@ -147,8 +147,8 @@ export async function getStaticProps(context) {
                 comment: review.comment,
             })),
             movieId: movieID,
-        }, revalidate: 5,
-    }
+        }, revalidate: 1,
+    };
 }
 
 export default SpecificMovie; 
