@@ -11,7 +11,7 @@ import React, { useContext } from "react";
 import { Context } from "../../_app";
 
 
-function SpecifcMovie(props) {
+function SpecificMovie(props) {
     const [rating, setRating] = useState(1);
     const [review, setReview] = useState("");
     const [name, setName] = useState("");
@@ -147,8 +147,8 @@ export async function getStaticProps(context) {
                 comment: review.comment,
             })),
             movieId: movieID,
-        }
+        }, revalidate: 5,
     }
 }
 
-export default SpecifcMovie; 
+export default SpecificMovie; 
