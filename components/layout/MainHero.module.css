@@ -18,12 +18,15 @@
     text-align: center;
     margin: 0 auto;
     font-size:2vw;
-    padding-bottom: 2.5rem;
+    padding-bottom: 1rem;
 }
 
 .image {
-    max-height: 45vh;
-    animation: fade-in 1s forwards 1;
+  margin: 0 0 40px 0; 
+  border: solid 3px rgb(107, 3, 3); 
+  border-radius: 3px; 
+  max-height: 40vh; 
+  animation: fade-in 1s forwards 1;
   }
   
   @keyframes fade-in {
