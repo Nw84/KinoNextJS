@@ -18,10 +18,15 @@
     text-align: center;
     margin: 0 auto;
     font-size:2vw;
+    padding-bottom: 1rem;
 }
 
 .image {
-    animation: fade-in 1s forwards 1;
+  margin: 0 0 40px 0; 
+  border: solid 3px rgb(107, 3, 3); 
+  border-radius: 3px; 
+  max-height: 40vh; 
+  animation: fade-in 1s forwards 1;
   }
   
   @keyframes fade-in {
@@ -33,3 +38,19 @@
       opacity: 1;
     }
   }
+
+@media only screen and (max-width: 1640px) {
+    .image  {
+      max-height: 35vh
+    }
+    .heroText {   
+      font-size:1.8vw;
+      padding-bottom: 1rem;
+  }
+}
+
+@media only screen and (max-width: 1280px) {
+  .image  {
+    max-height: 20vh
+  }
+}

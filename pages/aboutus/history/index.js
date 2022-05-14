@@ -15,7 +15,7 @@ function history() {
             </div>
             <br></br>
             <div className={classes.bioImg}>
-                <img src='/yhbio.jpg' />
+                <img src='/yhbio.jpg' alt="Picture of our cinema in Ytterhogdal" />
             </div>
 
         </div>

@@ -33,5 +33,7 @@ export default async function loginHandler(req, res) {
             res.json("Det finns ingen användare med det namnet")
             res.status(405).end();
         }
+    } else {
+        res.status(405).end();
     }
 }
