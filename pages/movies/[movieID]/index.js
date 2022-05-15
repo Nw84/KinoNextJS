@@ -3,7 +3,6 @@ import ReviewList from "../../../components/reviews/reviewList";
 import { getReviews } from "../../../helpers/reviewHelper";
 import ReviewForm from "../../../components/reviews/ReviewForm";
 import { useState } from "react";
-import { useRouter } from "next/router";
 import classes from "../../../styles/movieId.module.css";
 import { pathHelper, getOnePoster } from "../../../helpers/posterHelper";
 import Link from "next/link";
@@ -11,7 +10,7 @@ import React, { useContext } from "react";
 import { Context } from "../../_app";
 
 
-function SpecifcMovie(props) {
+function SpecificMovie(props) {
     const [rating, setRating] = useState(1);
     const [review, setReview] = useState("");
     const [name, setName] = useState("");
@@ -29,8 +28,6 @@ function SpecifcMovie(props) {
         setHigh(high - 5)
     }
 
-    const router = useRouter();
-
     async function handleReview() {
         await fetch("/api/review", {
             method: "POST",
@@ -39,7 +36,7 @@ function SpecifcMovie(props) {
                 rating,
                 comment: review,
                 movieId: props.movieId,
-                date: new Date()
+                date: new Date(),
             }),
             headers: {
                 "Content-Type": "application/json"
@@ -50,7 +47,6 @@ function SpecifcMovie(props) {
         setRating(1);
         setLow(0)
         setHigh(5)
-        router.push("/movies/" + props.movieId);
     }
 
     return (
@@ -148,7 +144,7 @@ export async function getStaticProps(context) {
             })),
             movieId: movieID,
         }
-    }
+    };
 }
 
-export default SpecifcMovie; 
+export default SpecificMovie; 
