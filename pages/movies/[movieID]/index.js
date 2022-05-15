@@ -115,7 +115,7 @@ export async function getStaticPaths() {
     const posters = await pathHelper();
 
     return {
-        fallback: "false",
+        fallback: false,
         paths: posters.map(poster => ({
             params: { movieID: poster._id.toString() }
         })),
