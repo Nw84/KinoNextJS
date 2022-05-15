@@ -3,6 +3,7 @@ import ReviewList from "../../../components/reviews/reviewList";
 import { getReviews } from "../../../helpers/reviewHelper";
 import ReviewForm from "../../../components/reviews/ReviewForm";
 import { useState } from "react";
+import { Router, useRouter } from "next/router";
 import classes from "../../../styles/movieId.module.css";
 import { pathHelper, getOnePoster } from "../../../helpers/posterHelper";
 import Link from "next/link";
@@ -17,6 +18,8 @@ function SpecificMovie(props) {
     const [low, setLow] = useState(0);
     const [high, setHigh] = useState(5);
     const [context, setContext] = useContext(Context);
+
+    const router = useRouter();
 
     function nextHandler() {
         setLow(low + 5)
@@ -47,6 +50,7 @@ function SpecificMovie(props) {
         setRating(1);
         setLow(0)
         setHigh(5)
+        router.reload(window.location.pathname)
     }
 
     return (
