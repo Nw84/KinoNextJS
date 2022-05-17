@@ -1,6 +1,3 @@
-import Cookies from "cookies";
-import Iron from "@hapi/iron";
-import { ENC_KEY } from "../api/login";
 import { useRouter } from "next/router";
 import Button from "../../components/ui/Button";
 import LoginForm from "../../components/login/LoginForm";
@@ -11,6 +8,7 @@ import React, { useContext } from "react";
 import { Context } from "../_app";
 
 import classes from "../../styles/login.module.css";
+import { checkForCookie } from "../../helpers/cookieHelper";
 
 function Login(props) {
     const [username, setUsername] = useState("");
@@ -19,14 +17,12 @@ function Login(props) {
     const [pwd, setPwd] = useState("");
     const [pageState, setPageState] = useState("login");
     const [loggedIn, setLoggedIn] = useContext(Context);
-    
-
 
     const router = useRouter();
     const [error, setError] = useState("");
 
     useEffect(() => {
-        if (props.loggedIn === true) {
+        if (props.loggedIn.loggedIn === true) {
             setLoggedIn(true);
         } else {
             setLoggedIn(false);
@@ -75,9 +71,9 @@ function Login(props) {
                 "Content-Type": "application/json"
             }
         }).then((res) => res.json())
-        .then((data) => {
-            setError(data);
-        });
+            .then((data) => {
+                setError(data);
+            });
     }
 
     if (loggedIn) {
@@ -90,10 +86,10 @@ function Login(props) {
     } if (pageState == "login") {
         return (
             <div className={classes.loginContainer}>
-                    <LoginForm handleSubmit={handleSubmit} setPassword={setPassword} setUsername={setUsername} />
-                    <span className={classes.error}>{error}</span>
-                    <p>Registrera dig här om du inte har ett konto:</p>
-                    <Button onClick={() => (setPageState("registration"), setError(""))}>Registrera Konto</Button>
+                <LoginForm handleSubmit={handleSubmit} setPassword={setPassword} setUsername={setUsername} />
+                <span className={classes.error}>{error}</span>
+                <p>Registrera dig här om du inte har ett konto:</p>
+                <Button onClick={() => (setPageState("registration"), setError(""))}>Registrera Konto</Button>
             </div>
         )
     } else if (pageState == "registration") {
@@ -110,26 +106,11 @@ function Login(props) {
 }
 
 export async function getServerSideProps(context) {
-    const cookies = new Cookies(context.req, context.res);
-    const sessionStr = cookies.get("loggedin");
+    const result = await checkForCookie(context.req, context.res);
 
-    if (sessionStr) {
-        try {
-            const session = await Iron.unseal(sessionStr, ENC_KEY, Iron.defaults);
-            if (session.loggedIn) {
-                return {
-                    props: {
-                        loggedIn: true
-                    },
-                }
-            }
-        } catch (err) {
-            // Incorrect encrypted string. Proceed to notFound
-        }
-    }
     return {
         props: {
-            loggedIn: false
+            loggedIn: result,
         },
     }
 };

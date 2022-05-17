@@ -3,13 +3,13 @@ import ReviewList from "../../../components/reviews/reviewList";
 import { getReviews } from "../../../helpers/reviewHelper";
 import ReviewForm from "../../../components/reviews/ReviewForm";
 import { useState } from "react";
-import { Router, useRouter } from "next/router";
+import { useRouter } from "next/router";
 import classes from "../../../styles/movieId.module.css";
-import { pathHelper, getOnePoster } from "../../../helpers/posterHelper";
+import { getOnePoster } from "../../../helpers/posterHelper";
 import Link from "next/link";
-import React, { useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import { Context } from "../../_app";
-
+import { checkForCookie } from "../../../helpers/cookieHelper";
 
 function SpecificMovie(props) {
     const [rating, setRating] = useState(1);
@@ -17,9 +17,17 @@ function SpecificMovie(props) {
     const [name, setName] = useState("");
     const [low, setLow] = useState(0);
     const [high, setHigh] = useState(5);
-    const [context, setContext] = useContext(Context);
+    const [loggedIn, setLoggedIn] = useContext(Context);
 
     const router = useRouter();
+
+    useEffect(() => {
+        if (props.loggedIn.loggedIn === true) {
+            setLoggedIn(true);
+        } else {
+            setLoggedIn(false);
+        }
+    });
 
     function nextHandler() {
         setLow(low + 5)
@@ -50,7 +58,6 @@ function SpecificMovie(props) {
         setRating(1);
         setLow(0)
         setHigh(5)
-        router.reload(window.location.pathname)
     }
 
     return (
@@ -93,7 +100,7 @@ function SpecificMovie(props) {
                     </div>
                 }
                 <div className={classes.reviewFormContainer}>
-                    {context === true ?
+                    {loggedIn === true ?
                         <ReviewForm
                             handleReview={handleReview}
                             setRating={setRating}
@@ -115,22 +122,13 @@ function SpecificMovie(props) {
     )
 }
 
-export async function getStaticPaths() {
-    const posters = await pathHelper();
-
-    return {
-        fallback: false,
-        paths: posters.map(poster => ({
-            params: { movieID: poster._id.toString() }
-        })),
-    };
-}
 
 //Fetch data for a single movie
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
     const movieID = context.params.movieID;
     const selectedMovie = await getOnePoster(movieID)
     const reviews = await getReviews(movieID);
+    const result = await checkForCookie(context.req, context.res);
 
     return {
         props: {
@@ -147,6 +145,7 @@ export async function getStaticProps(context) {
                 comment: review.comment,
             })),
             movieId: movieID,
+            loggedIn: result,
         }
     };
 }
