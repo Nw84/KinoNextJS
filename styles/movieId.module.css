@@ -37,3 +37,35 @@
     color: rgba(255, 255, 255, 0.8);
     font-weight: normal;
 }
+
+.message {
+    text-align: center;
+    color: lightgreen;
+    animation: message 15s ease-in-out;
+}
+
+@keyframes message {
+    0% {
+      opacity: 0;
+    }
+  
+    20% {
+      opacity: 1;
+    }
+  
+    40% {
+      opacity: 0;
+    }
+  
+    60% {
+      opacity: 1;
+    }
+  
+    80% {
+      opacity: 0;
+    }
+  
+    100% {
+      opacity: 1;
+    }
+}

@@ -18,6 +18,7 @@ function SpecificMovie(props) {
     const [low, setLow] = useState(0);
     const [high, setHigh] = useState(5);
     const [loggedIn, setLoggedIn] = useContext(Context);
+    const [message, setMessage] = useState("");
 
     const router = useRouter();
 
@@ -52,13 +53,18 @@ function SpecificMovie(props) {
             headers: {
                 "Content-Type": "application/json"
             }
-        });
+        }).then((res) => res.json())
+            .then((data) => {
+                setMessage(data);
+            });
         setName("");
         setReview("");
         setRating(1);
         setLow(0)
         setHigh(5)
+        router.push("/movies/" + props.movieId);
     }
+
 
     return (
         <>
@@ -116,6 +122,9 @@ function SpecificMovie(props) {
                             </Link>
                         </div>
                     }
+                </div>
+                <div className={classes.message}>
+                    <p>{message}</p>
                 </div>
             </div>
         </>
