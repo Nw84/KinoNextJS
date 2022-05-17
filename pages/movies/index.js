@@ -16,7 +16,7 @@ function movies(props) {
     )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
     const posters = await getAllMoviePosters();
     return {
         props: {
@@ -26,7 +26,6 @@ export async function getStaticProps() {
                 id: poster._id.toString(),
             })),
         },
-        revalidate: 1,
     };
 }
 
