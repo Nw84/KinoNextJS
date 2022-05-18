@@ -1,8 +1,8 @@
 import { useRouter } from "next/router";
-import { getSpecifikScreenings, getMovieList } from "../../helpers/screeningHelper";
-import ScreeningsList from "../../components/screenings/ScreeningsList";
-import ScreeningSearch from "../../components/screenings/Screening-search";
-import classes from "../../styles/tickets.module.css";
+import { getSpecifikScreenings, getMovieList } from "../../../helpers/screeningHelper";
+import ScreeningsList from "../../../components/screenings/ScreeningsList";
+import ScreeningSearch from "../../../components/screenings/Screening-search";
+import classes from "../../../styles/tickets.module.css";
 
 function FilteredTicketsPage(props) {
     const router = useRouter();
@@ -28,7 +28,7 @@ function FilteredTicketsPage(props) {
 }
 
 export async function getServerSideProps(context) {
-    const name = context.params.slug;
+    const name = context.params.movieName;
     const screenings = await getSpecifikScreenings(name);
     const list = await getMovieList();
 
